@@ -1,0 +1,143 @@
+.composer {
+	position: relative;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	min-height: 3.2rem;
+	padding: 0.32rem 0.4rem 0.32rem 0.95rem;
+	background: var(--surface);
+	border: 2px solid var(--line);
+	border-radius: 0.8rem;
+	transition:
+		border-color 160ms ease,
+		box-shadow 160ms ease;
+}
+.quick-composer {
+	position: relative;
+	z-index: 12;
+}
+.quick-composer.dragging .composer {
+	border-color: var(--ink);
+	background: var(--surface-alt);
+}
+.composer:hover,
+.composer:focus-within {
+	border-color: var(--ink);
+	box-shadow: 0 9px 11px -3px rgba(0, 0, 0, 0.2);
+}
+.composer > input {
+	min-width: 0;
+	flex: 1;
+	color: var(--ink);
+	background: transparent;
+	border: 0;
+	outline: 0;
+	font-size: 0.85rem;
+	cursor: text;
+}
+.composer > input::placeholder {
+	color: var(--muted);
+}
+.composer-attach,
+.composer-advanced {
+	display: grid;
+	width: 1.75rem;
+	height: 1.75rem;
+	flex: none;
+	place-items: center;
+	color: var(--muted);
+	background: transparent;
+	border: 0;
+	border-radius: 0.4rem;
+	cursor: pointer;
+}
+.composer-attach:hover,
+.composer-advanced:hover {
+	color: var(--ink);
+	background: var(--surface-alt);
+}
+.composer-attach:focus-within {
+	color: var(--ink);
+	outline: 2px solid var(--ink);
+	outline-offset: 2px;
+}
+.composer-attach input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	pointer-events: none;
+}
+.composer-previews {
+	display: flex;
+	gap: 0.6rem;
+	overflow-x: auto;
+	padding: 0.7rem;
+	background: var(--surface);
+	border: 1px solid var(--line);
+	border-bottom: 0;
+	border-radius: 0.8rem 0.8rem 0 0;
+	box-shadow: var(--shadow-soft);
+}
+.composer-previews + .composer {
+	border-radius: 0 0 0.8rem 0.8rem;
+}
+.composer-preview {
+	position: relative;
+	width: 4.5rem;
+	height: 4.5rem;
+	flex: none;
+}
+.composer-preview img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 0.4rem;
+}
+.composer-preview button {
+	position: absolute;
+	top: -0.3rem;
+	right: -0.3rem;
+	display: grid;
+	width: 1.2rem;
+	height: 1.2rem;
+	place-items: center;
+	color: #fff;
+	background: #161616;
+	border: 0;
+	border-radius: 50%;
+}
+.composer-error {
+	margin: 0.45rem 0 0;
+	color: var(--danger);
+	font-size: 0.75rem;
+}
+.composer-shortcut {
+	padding: 0.12rem 0.35rem;
+	color: var(--muted);
+	background: var(--surface-alt);
+	border-radius: 0.3rem;
+	font-size: 0.65rem;
+}
+.composer-add {
+	display: inline-flex;
+	align-items: center;
+	align-self: stretch;
+	gap: 0.35rem;
+	padding: 0 0.8rem;
+	color: var(--ink);
+	background: var(--surface-alt);
+	border-radius: 0.48rem;
+	font-size: 0.78rem;
+	font-weight: 600;
+}
+.composer-add:hover,
+.composer:focus-within .composer-add {
+	color: var(--surface);
+	background: var(--accent);
+}
+:root[data-theme="dark"] .composer-add:hover,
+:root[data-theme="dark"] .composer:focus-within .composer-add {
+	color: #161616;
+}

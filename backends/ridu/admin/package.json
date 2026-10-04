@@ -1,0 +1,33 @@
+{
+	"name": "@quikmarq/ridu-admin",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"build": "vite build"
+	},
+	"dependencies": {
+		"@riducms/admin": "0.13.0",
+		"@riducms/plugin": "0.13.0",
+		"@riducms/ui": "0.13.0",
+		"@riducms/plugin-richtext": "0.13.0",
+		"@riducms/plugin-seo": "0.13.0",
+		"@riducms/plugin-form-builder": "0.13.0",
+		"svelte": "^5.57.0"
+	},
+	"devDependencies": {
+		"@hvniel/lexical-svelte": "^0.1.1",
+		"@iconify/json": "^2.2.509",
+		"@sveltejs/vite-plugin-svelte": "^7.2.0",
+		"@tsconfig/svelte": "^5.0.8",
+		"@types/node": "^24.13.3",
+		"@riducms/build": "0.13.0",
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4",
+		"svelte-check": "^4.7.3",
+		"typescript": "~6.0.2",
+		"vite": "^8.2.0"
+	}
+}

@@ -1,0 +1,199 @@
+@media (max-width: 900px) {
+	.hero {
+		grid-template-columns: 1fr;
+		gap: 3rem;
+		max-width: 42rem;
+	}
+	.hero-auth-card {
+		min-height: 0;
+	}
+	.auth-page {
+		grid-template-columns: 1fr;
+	}
+	.auth-side {
+		display: none;
+	}
+	.shortcut-hint,
+	.create-group-shortcut {
+		display: none;
+	}
+}
+
+@media (max-width: 680px) {
+	.marketing-nav {
+		min-height: 4.7rem;
+	}
+	.marketing-nav nav > a:first-child {
+		display: none;
+	}
+	.hero {
+		padding-top: 3.4rem;
+	}
+	.hero h1 {
+		margin-bottom: 2rem;
+		font-size: clamp(2.25rem, 11vw, 3rem);
+	}
+	.hero-auth-card {
+		padding: 2rem 1.25rem;
+	}
+	.app-header-inner {
+		min-height: 4.2rem;
+	}
+	.app-header-inner .brand {
+		display: inline-flex;
+	}
+	.group-selector-trigger {
+		max-width: 10.5rem;
+	}
+	.topbar-left > .mobile-only {
+		display: none;
+	}
+	.group-menu-header .mobile-only {
+		display: inline-grid;
+	}
+	.account-name {
+		display: none;
+	}
+	.avatar {
+		display: grid;
+		width: 1.85rem;
+		height: 1.85rem;
+		place-items: center;
+		color: var(--ink);
+		background: var(--surface-alt);
+		border-radius: 50%;
+		font-size: 0.73rem;
+		font-weight: 600;
+	}
+	.account-trigger > svg {
+		display: none;
+	}
+	.workspace-main {
+		min-height: calc(100vh - 4.2rem);
+	}
+	.workspace-container,
+	.workspace-feed {
+		padding-top: 1.55rem;
+	}
+	.quick-composer {
+		position: fixed;
+		z-index: 50;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		padding: 0.75rem 1rem max(1rem, env(safe-area-inset-bottom));
+		background: var(--bg);
+		border-top: 1px solid var(--line);
+	}
+	.quick-composer .composer,
+	.quick-composer .composer-previews,
+	.quick-composer .composer-error {
+		width: min(100%, 42rem);
+		margin-right: auto;
+		margin-left: auto;
+	}
+	.workspace-heading h1 {
+		font-size: 1.15rem;
+	}
+	.composer-shortcut {
+		display: none;
+	}
+	.section-heading {
+		margin-top: 0;
+	}
+	.list-toolbar {
+		align-items: stretch;
+		flex-direction: column;
+	}
+	.search-form {
+		width: 100%;
+		max-width: none;
+	}
+	.kind-filter {
+		overflow-x: auto;
+	}
+	.kind-filter button {
+		min-width: max-content;
+		flex: 1;
+	}
+	.bookmark-row {
+		grid-template-columns: 1.25rem minmax(0, 1fr) auto;
+	}
+	.bookmark-row-media {
+		grid-column: 2;
+		width: min(100%, 12rem);
+		height: 7rem;
+		margin-top: 0.25rem;
+	}
+	.bookmark-row .card-open {
+		display: none;
+	}
+	.bookmark-row-actions {
+		grid-column: 3;
+		grid-row: 1;
+	}
+	.dialog-actions.space-between,
+	.share-link {
+		align-items: stretch;
+		flex-direction: column;
+	}
+	.editor-dialog {
+		top: auto;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		max-height: 92vh;
+		border-right: 0;
+		border-bottom: 0;
+		border-left: 0;
+		border-radius: 1rem 1rem 0 0;
+	}
+	.shared-main,
+	.shared-collection {
+		padding-top: 2.2rem;
+	}
+}
+
+@media (max-width: 430px) {
+	.marketing-nav,
+	.hero,
+	.marketing-footer {
+		width: min(calc(100% - 2rem), 72rem);
+	}
+	.marketing-nav .button svg {
+		display: none;
+	}
+	.topbar-right > .button-outline {
+		width: 2rem;
+		min-height: 2rem;
+		padding: 0;
+		font-size: 0;
+	}
+	.topbar-right > .button-outline svg {
+		width: 0.95rem;
+		height: 0.95rem;
+	}
+	.group-selector-trigger {
+		max-width: 9.5rem;
+	}
+	.workspace-heading {
+		align-items: start;
+	}
+	.composer {
+		border-radius: 1.5rem;
+	}
+	.composer-add {
+		width: 2.45rem;
+		padding: 0;
+		justify-content: center;
+		border-radius: 50%;
+		font-size: 0;
+	}
+	.pagination {
+		gap: 0.35rem;
+	}
+	.pagination .button {
+		padding: 0.45rem 0.55rem;
+	}
+}

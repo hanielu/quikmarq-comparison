@@ -1,0 +1,5480 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Quikmarq API",
+    "version": "schema-1"
+  },
+  "paths": {
+    "/api/access/collections/admins/selection": {
+      "post": {
+        "operationId": "resolveSelectionadmins",
+        "parameters": null,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionSelectionInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionSelectionEnvelope"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Resolve filtered Admins selection"
+      }
+    },
+    "/api/access/collections/assets/selection": {
+      "post": {
+        "operationId": "resolveSelectionassets",
+        "parameters": null,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionSelectionInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionSelectionEnvelope"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Resolve filtered Assets selection"
+      }
+    },
+    "/api/access/collections/bookmarks/selection": {
+      "post": {
+        "operationId": "resolveSelectionbookmarks",
+        "parameters": null,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionSelectionInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionSelectionEnvelope"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Resolve filtered Bookmarks selection"
+      }
+    },
+    "/api/access/collections/groups/selection": {
+      "post": {
+        "operationId": "resolveSelectiongroups",
+        "parameters": null,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionSelectionInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionSelectionEnvelope"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Resolve filtered Groups selection"
+      }
+    },
+    "/api/access/collections/users/selection": {
+      "post": {
+        "operationId": "resolveSelectionusers",
+        "parameters": null,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionSelectionInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionSelectionEnvelope"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Resolve filtered Users selection"
+      }
+    },
+    "/api/auth/admins/bootstrap": {
+      "get": {
+        "operationId": "authBootstrapadmins",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthBootstrapEnvelope"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Check first-user setup availability for Admins"
+      }
+    },
+    "/api/auth/admins/create-user": {
+      "post": {
+        "operationId": "createAuthadmins",
+        "parameters": null,
+        "responses": {
+          "201": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Create Admin with credentials"
+      }
+    },
+    "/api/auth/admins/login": {
+      "post": {
+        "operationId": "loginadmins",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Login to Admins"
+      }
+    },
+    "/api/auth/admins/{id}/unlock": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "operationId": "forceUnlockadmins",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Force unlock Admin"
+      }
+    },
+    "/api/auth/change-password": {
+      "post": {
+        "operationId": "changePassword",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Change the current password"
+      }
+    },
+    "/api/auth/logout": {
+      "post": {
+        "operationId": "logout",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Logout"
+      }
+    },
+    "/api/auth/logout-all": {
+      "post": {
+        "operationId": "logoutAll",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Logout all sessions"
+      }
+    },
+    "/api/auth/me": {
+      "get": {
+        "operationId": "currentSession",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Current session"
+      }
+    },
+    "/api/auth/rotate": {
+      "post": {
+        "operationId": "rotateSession",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Rotate the current session token"
+      }
+    },
+    "/api/auth/sessions": {
+      "get": {
+        "operationId": "listAuthSessions",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "List active sessions"
+      }
+    },
+    "/api/auth/sessions/{id}": {
+      "delete": {
+        "operationId": "revokeAuthSession",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Revoke an active session"
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/api/auth/users/bootstrap": {
+      "get": {
+        "operationId": "authBootstrapusers",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthBootstrapEnvelope"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Check first-user setup availability for Users"
+      }
+    },
+    "/api/auth/users/create-user": {
+      "post": {
+        "operationId": "createAuthusers",
+        "parameters": null,
+        "responses": {
+          "201": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Create User with credentials"
+      }
+    },
+    "/api/auth/users/login": {
+      "post": {
+        "operationId": "loginusers",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Login to Users"
+      }
+    },
+    "/api/auth/users/{id}/unlock": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "operationId": "forceUnlockusers",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Force unlock User"
+      }
+    },
+    "/api/bookmark-metadata": {
+      "post": {
+        "operationId": "custom-root-post-bookmark-metadata-a6fadca86d0b",
+        "responses": {
+          "2XX": {
+            "description": "Endpoint-defined successful response"
+          },
+          "default": {
+            "description": "Endpoint-defined response"
+          }
+        },
+        "summary": "Read public web page metadata"
+      }
+    },
+    "/api/collections/admins": {
+      "get": {
+        "operationId": "listadmins",
+        "parameters": [
+          {
+            "description": "One-based result page.",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "maximum": 1000000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Maximum documents returned in this page.",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSON-encoded document filter combined atomically with collection access rules.",
+            "in": "query",
+            "name": "where",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Ordered field names; prefix a field with - for descending order.",
+            "explode": true,
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "style": "form"
+          },
+          {
+            "description": "Include collection and per-document access capabilities for this page.",
+            "in": "query",
+            "name": "include-access",
+            "required": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Expand readable relationships recursively.",
+            "in": "query",
+            "name": "depth",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "maximum": 5,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSON-encoded top-level field selection.",
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSON-encoded relationship population; cannot be combined with depth.",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "docs": {
+                          "items": {
+                            "$ref": "#/components/schemas/admins"
+                          },
+                          "type": "array"
+                        },
+                        "pagination": {
+                          "$ref": "#/components/schemas/Pagination"
+                        }
+                      },
+                      "required": [
+                        "docs",
+                        "pagination"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "access": {
+                          "$ref": "#/components/schemas/CollectionPageAccess"
+                        },
+                        "docs": {
+                          "items": {
+                            "$ref": "#/components/schemas/admins"
+                          },
+                          "type": "array"
+                        },
+                        "pagination": {
+                          "$ref": "#/components/schemas/Pagination"
+                        }
+                      },
+                      "required": [
+                        "docs",
+                        "pagination",
+                        "access"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "List Admins"
+      },
+      "post": {
+        "operationId": "createadmins",
+        "parameters": null,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/adminsCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/admins"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Create Admin"
+      }
+    },
+    "/api/collections/admins/bulk": {
+      "post": {
+        "operationId": "bulkadmins",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Bulk mutate Admins"
+      }
+    },
+    "/api/collections/admins/validate": {
+      "post": {
+        "description": "Read-only advisory evaluation with normal resource and field authorization. No defaults, mutation hooks, writes, jobs, or fallback translations run. A successful check is neither authorization nor a reservation. Operational failure returns an error, never successful validation.",
+        "operationId": "liveValidateadmins",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiveValidationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LiveValidationEnvelope"
+                }
+              }
+            },
+            "description": "Completed checks and explicitly skipped unavailable or malformed values"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Check opted-in fields in unsaved input"
+      }
+    },
+    "/api/collections/admins/{id}": {
+      "delete": {
+        "operationId": "deleteadmins",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/admins"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Delete Admin"
+      },
+      "get": {
+        "operationId": "findadmins",
+        "parameters": [
+          {
+            "description": "Expand readable relationships recursively.",
+            "in": "query",
+            "name": "depth",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "maximum": 5,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSON-encoded top-level field selection.",
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSON-encoded relationship population; cannot be combined with depth.",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/admins"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Find Admin"
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "patch": {
+        "operationId": "updateadmins",
+        "parameters": null,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/adminsUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/admins"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Update Admin"
+      }
+    },
+    "/api/collections/admins/{id}/copy-locale": {
+      "post": {
+        "operationId": "copyLocaleadmins",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Copy localized values between locales"
+      }
+    },
+    "/api/collections/admins/{id}/duplicate": {
+      "post": {
+        "operationId": "duplicateadmins",
+        "parameters": null,
+        "responses": {
+          "201": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Duplicate Admin"
+      }
+    },
+    "/api/collections/assets": {
+      "get": {
+        "operationId": "listassets",
+        "parameters": [
+          {
+            "description": "One-based result page.",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "maximum": 1000000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Maximum documents returned in this page.",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSON-encoded document filter combined atomically with collection access rules.",
+            "in": "query",
+            "name": "where",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Ordered field names; prefix a field with - for descending order.",
+            "explode": true,
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "style": "form"
+          },
+          {
+            "description": "Include collection and per-document access capabilities for this page.",
+            "in": "query",
+            "name": "include-access",
+            "required": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Expand readable relationships recursively.",
+            "in": "query",
+            "name": "depth",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "maximum": 5,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSON-encoded top-level field selection.",
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSON-encoded relationship population; cannot be combined with depth.",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "docs": {
+                          "items": {
+                            "$ref": "#/components/schemas/assets"
+                          },
+                          "type": "array"
+                        },
+                        "pagination": {
+                          "$ref": "#/components/schemas/Pagination"
+                        }
+                      },
+                      "required": [
+                        "docs",
+                        "pagination"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "access": {
+                          "$ref": "#/components/schemas/CollectionPageAccess"
+                        },
+                        "docs": {
+                          "items": {
+                            "$ref": "#/components/schemas/assets"
+                          },
+                          "type": "array"
+                        },
+                        "pagination": {
+                          "$ref": "#/components/schemas/Pagination"
+                        }
+                      },
+                      "required": [
+                        "docs",
+                        "pagination",
+                        "access"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "List Assets"
+      },
+      "post": {
+        "operationId": "createassets",
+        "parameters": null,
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "data": {
+                    "contentMediaType": "application/json",
+                    "contentSchema": {
+                      "$ref": "#/components/schemas/assetsCreate"
+                    },
+                    "description": "JSON-encoded document fields.",
+                    "type": "string"
+                  },
+                  "file": {
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "image": {
+                    "description": "JSON-encoded image edit, using percentages of the oriented source.",
+                    "type": "string"
+                  },
+                  "publish": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "file"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/assets"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Create Asset"
+      }
+    },
+    "/api/collections/assets/bulk": {
+      "post": {
+        "operationId": "bulkassets",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Bulk mutate Assets"
+      }
+    },
+    "/api/collections/assets/remote-upload": {
+      "post": {
+        "operationId": "remoteUploadassets",
+        "parameters": null,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "data": {
+                    "type": "object"
+                  },
+                  "filename": {
+                    "type": "string"
+                  },
+                  "image": {
+                    "description": "Coordinates are percentages of the oriented private source. Zero crop width and height reset to the full source; focal coordinates are constrained to the crop.",
+                    "properties": {
+                      "cropHeight": {
+                        "maximum": 100,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "cropWidth": {
+                        "maximum": 100,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "cropX": {
+                        "maximum": 100,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "cropY": {
+                        "maximum": 100,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "focalX": {
+                        "maximum": 100,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "focalY": {
+                        "maximum": 100,
+                        "minimum": 0,
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "focalX",
+                      "focalY",
+                      "cropX",
+                      "cropY",
+                      "cropWidth",
+                      "cropHeight"
+                    ],
+                    "type": "object"
+                  },
+                  "publish": {
+                    "type": "boolean"
+                  },
+                  "url": {
+                    "format": "uri",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "url"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Create Asset from a public URL"
+      }
+    },
+    "/api/collections/assets/upload-preview": {
+      "post": {
+        "operationId": "previewUploadassets",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "format": "uri",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "url"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Download a remote file without creating a document"
+      }
+    },
+    "/api/collections/assets/validate": {
+      "post": {
+        "description": "Read-only advisory evaluation with normal resource and field authorization. No defaults, mutation hooks, writes, jobs, or fallback translations run. A successful check is neither authorization nor a reservation. Operational failure returns an error, never successful validation.",
+        "operationId": "liveValidateassets",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiveValidationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LiveValidationEnvelope"
+                }
+              }
+            },
+            "description": "Completed checks and explicitly skipped unavailable or malformed values"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Check opted-in fields in unsaved input"
+      }
+    },
+    "/api/collections/assets/{id}": {
+      "delete": {
+        "operationId": "deleteassets",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/assets"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Delete Asset"
+      },
+      "get": {
+        "operationId": "findassets",
+        "parameters": [
+          {
+            "description": "Expand readable relationships recursively.",
+            "in": "query",
+            "name": "depth",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "maximum": 5,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSON-encoded top-level field selection.",
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSON-encoded relationship population; cannot be combined with depth.",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/assets"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Find Asset"
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "patch": {
+        "operationId": "updateassets",
+        "parameters": null,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/assetsUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/assets"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Update Asset"
+      }
+    },
+    "/api/collections/assets/{id}/copy-locale": {
+      "post": {
+        "operationId": "copyLocaleassets",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Copy localized values between locales"
+      }
+    },
+    "/api/collections/assets/{id}/duplicate": {
+      "post": {
+        "operationId": "duplicateassets",
+        "parameters": null,
+        "responses": {
+          "201": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Duplicate Asset"
+      }
+    },
+    "/api/collections/assets/{id}/upload": {
+      "patch": {
+        "operationId": "updateUploadassets",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Expected document _revision. Stale revisions return 409 without changing fields or file references.",
+            "in": "header",
+            "name": "If-Match",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "data": {
+                    "type": "object"
+                  },
+                  "filename": {
+                    "type": "string"
+                  },
+                  "image": {
+                    "description": "Coordinates are percentages of the oriented private source. Zero crop width and height reset to the full source; focal coordinates are constrained to the crop.",
+                    "properties": {
+                      "cropHeight": {
+                        "maximum": 100,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "cropWidth": {
+                        "maximum": 100,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "cropX": {
+                        "maximum": 100,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "cropY": {
+                        "maximum": 100,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "focalX": {
+                        "maximum": 100,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "focalY": {
+                        "maximum": 100,
+                        "minimum": 0,
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "focalX",
+                      "focalY",
+                      "cropX",
+                      "cropY",
+                      "cropWidth",
+                      "cropHeight"
+                    ],
+                    "type": "object"
+                  },
+                  "publish": {
+                    "type": "boolean"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "data": {
+                    "description": "JSON-encoded document fields.",
+                    "type": "string"
+                  },
+                  "file": {
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "image": {
+                    "description": "JSON-encoded image edit, using percentages of the oriented source.",
+                    "type": "string"
+                  },
+                  "publish": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "file"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Save Asset file, image and document edits"
+      }
+    },
+    "/api/collections/assets/{id}/upload-source": {
+      "get": {
+        "description": "Authenticated, private source download. Both read and update access predicates must match the document. Never delivered by the public upload URL.",
+        "operationId": "readUploadSourceassets",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Read editor-only image source"
+      },
+      "head": {
+        "description": "Authenticated, private source download. Both read and update access predicates must match the document. Never delivered by the public upload URL.",
+        "operationId": "headUploadSourceassets",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Read editor-only image source metadata"
+      }
+    },
+    "/api/collections/bookmarks": {
+      "get": {
+        "operationId": "listbookmarks",
+        "parameters": [
+          {
+            "description": "One-based result page.",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "maximum": 1000000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Maximum documents returned in this page.",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSON-encoded document filter combined atomically with collection access rules.",
+            "in": "query",
+            "name": "where",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Ordered field names; prefix a field with - for descending order.",
+            "explode": true,
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "style": "form"
+          },
+          {
+            "description": "Include collection and per-document access capabilities for this page.",
+            "in": "query",
+            "name": "include-access",
+            "required": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Expand readable relationships recursively.",
+            "in": "query",
+            "name": "depth",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "maximum": 5,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSON-encoded top-level field selection.",
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSON-encoded relationship population; cannot be combined with depth.",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "docs": {
+                          "items": {
+                            "$ref": "#/components/schemas/bookmarks"
+                          },
+                          "type": "array"
+                        },
+                        "pagination": {
+                          "$ref": "#/components/schemas/Pagination"
+                        }
+                      },
+                      "required": [
+                        "docs",
+                        "pagination"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "access": {
+                          "$ref": "#/components/schemas/CollectionPageAccess"
+                        },
+                        "docs": {
+                          "items": {
+                            "$ref": "#/components/schemas/bookmarks"
+                          },
+                          "type": "array"
+                        },
+                        "pagination": {
+                          "$ref": "#/components/schemas/Pagination"
+                        }
+                      },
+                      "required": [
+                        "docs",
+                        "pagination",
+                        "access"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "List Bookmarks"
+      },
+      "post": {
+        "operationId": "createbookmarks",
+        "parameters": [
+          {
+            "description": "Create the document as a draft when true or publish it atomically when false.",
+            "in": "query",
+            "name": "draft",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/bookmarksCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/bookmarks"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Create Bookmark"
+      }
+    },
+    "/api/collections/bookmarks/bulk": {
+      "post": {
+        "operationId": "bulkbookmarks",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Bulk mutate Bookmarks"
+      }
+    },
+    "/api/collections/bookmarks/validate": {
+      "post": {
+        "description": "Read-only advisory evaluation with normal resource and field authorization. No defaults, mutation hooks, writes, jobs, or fallback translations run. A successful check is neither authorization nor a reservation. Operational failure returns an error, never successful validation.",
+        "operationId": "liveValidatebookmarks",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiveValidationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LiveValidationEnvelope"
+                }
+              }
+            },
+            "description": "Completed checks and explicitly skipped unavailable or malformed values"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Check opted-in fields in unsaved input"
+      }
+    },
+    "/api/collections/bookmarks/{id}": {
+      "delete": {
+        "operationId": "deletebookmarks",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/bookmarks"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Delete Bookmark"
+      },
+      "get": {
+        "operationId": "findbookmarks",
+        "parameters": [
+          {
+            "description": "Expand readable relationships recursively.",
+            "in": "query",
+            "name": "depth",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "maximum": 5,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSON-encoded top-level field selection.",
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSON-encoded relationship population; cannot be combined with depth.",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/bookmarks"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Find Bookmark"
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "patch": {
+        "operationId": "updatebookmarks",
+        "parameters": null,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/bookmarksUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/bookmarks"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Update Bookmark"
+      }
+    },
+    "/api/collections/bookmarks/{id}/copy-locale": {
+      "post": {
+        "operationId": "copyLocalebookmarks",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Copy localized values between locales"
+      }
+    },
+    "/api/collections/bookmarks/{id}/duplicate": {
+      "post": {
+        "operationId": "duplicatebookmarks",
+        "parameters": null,
+        "responses": {
+          "201": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Duplicate Bookmark"
+      }
+    },
+    "/api/collections/bookmarks/{id}/publish": {
+      "post": {
+        "operationId": "publishbookmarks",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Publish Bookmark"
+      }
+    },
+    "/api/collections/bookmarks/{id}/restore/{revision}": {
+      "post": {
+        "operationId": "restorebookmarks",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "revision",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "draft",
+            "required": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Restore Bookmark"
+      }
+    },
+    "/api/collections/bookmarks/{id}/schedule": {
+      "get": {
+        "operationId": "scheduledPublicationsbookmarks",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "List scheduled publications for Bookmark"
+      },
+      "post": {
+        "operationId": "schedulePublicationbookmarks",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "action": {
+                    "enum": [
+                      "publish"
+                    ],
+                    "type": "string"
+                  },
+                  "runAt": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "timeZone": {
+                    "description": "Optional region timezone such as Europe/London, UTC, or ±HH:mm offset retained for display; runAt remains the scheduled instant.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "action",
+                  "runAt"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Schedule Bookmark publication change"
+      }
+    },
+    "/api/collections/bookmarks/{id}/schedule/{jobId}": {
+      "delete": {
+        "operationId": "cancelScheduledPublicationbookmarks",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Cancel Bookmark scheduled publication"
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "jobId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/api/collections/bookmarks/{id}/versions": {
+      "get": {
+        "operationId": "versionsbookmarks",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "List Bookmark versions"
+      }
+    },
+    "/api/collections/bookmarks/{id}/versions/count": {
+      "get": {
+        "operationId": "countVersionsbookmarks",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountEnvelope"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Count Bookmark versions"
+      }
+    },
+    "/api/collections/bookmarks/{id}/versions/{revision}": {
+      "get": {
+        "operationId": "versionbookmarks",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Read Bookmark version"
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "revision",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ]
+    },
+    "/api/collections/groups": {
+      "get": {
+        "operationId": "listgroups",
+        "parameters": [
+          {
+            "description": "One-based result page.",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "maximum": 1000000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Maximum documents returned in this page.",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSON-encoded document filter combined atomically with collection access rules.",
+            "in": "query",
+            "name": "where",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Ordered field names; prefix a field with - for descending order.",
+            "explode": true,
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "style": "form"
+          },
+          {
+            "description": "Include collection and per-document access capabilities for this page.",
+            "in": "query",
+            "name": "include-access",
+            "required": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Expand readable relationships recursively.",
+            "in": "query",
+            "name": "depth",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "maximum": 5,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSON-encoded top-level field selection.",
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSON-encoded relationship population; cannot be combined with depth.",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "docs": {
+                          "items": {
+                            "$ref": "#/components/schemas/groups"
+                          },
+                          "type": "array"
+                        },
+                        "pagination": {
+                          "$ref": "#/components/schemas/Pagination"
+                        }
+                      },
+                      "required": [
+                        "docs",
+                        "pagination"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "access": {
+                          "$ref": "#/components/schemas/CollectionPageAccess"
+                        },
+                        "docs": {
+                          "items": {
+                            "$ref": "#/components/schemas/groups"
+                          },
+                          "type": "array"
+                        },
+                        "pagination": {
+                          "$ref": "#/components/schemas/Pagination"
+                        }
+                      },
+                      "required": [
+                        "docs",
+                        "pagination",
+                        "access"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "List Groups"
+      },
+      "post": {
+        "operationId": "creategroups",
+        "parameters": [
+          {
+            "description": "Create the document as a draft when true or publish it atomically when false.",
+            "in": "query",
+            "name": "draft",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/groupsCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/groups"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Create Group"
+      }
+    },
+    "/api/collections/groups/bulk": {
+      "post": {
+        "operationId": "bulkgroups",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Bulk mutate Groups"
+      }
+    },
+    "/api/collections/groups/validate": {
+      "post": {
+        "description": "Read-only advisory evaluation with normal resource and field authorization. No defaults, mutation hooks, writes, jobs, or fallback translations run. A successful check is neither authorization nor a reservation. Operational failure returns an error, never successful validation.",
+        "operationId": "liveValidategroups",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiveValidationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LiveValidationEnvelope"
+                }
+              }
+            },
+            "description": "Completed checks and explicitly skipped unavailable or malformed values"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Check opted-in fields in unsaved input"
+      }
+    },
+    "/api/collections/groups/{id}": {
+      "delete": {
+        "operationId": "deletegroups",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/groups"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Delete Group"
+      },
+      "get": {
+        "operationId": "findgroups",
+        "parameters": [
+          {
+            "description": "Expand readable relationships recursively.",
+            "in": "query",
+            "name": "depth",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "maximum": 5,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSON-encoded top-level field selection.",
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSON-encoded relationship population; cannot be combined with depth.",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/groups"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Find Group"
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "patch": {
+        "operationId": "updategroups",
+        "parameters": null,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/groupsUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/groups"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Update Group"
+      }
+    },
+    "/api/collections/groups/{id}/copy-locale": {
+      "post": {
+        "operationId": "copyLocalegroups",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Copy localized values between locales"
+      }
+    },
+    "/api/collections/groups/{id}/duplicate": {
+      "post": {
+        "operationId": "duplicategroups",
+        "parameters": null,
+        "responses": {
+          "201": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Duplicate Group"
+      }
+    },
+    "/api/collections/groups/{id}/publish": {
+      "post": {
+        "operationId": "publishgroups",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Publish Group"
+      }
+    },
+    "/api/collections/groups/{id}/restore/{revision}": {
+      "post": {
+        "operationId": "restoregroups",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "revision",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "draft",
+            "required": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Restore Group"
+      }
+    },
+    "/api/collections/groups/{id}/schedule": {
+      "get": {
+        "operationId": "scheduledPublicationsgroups",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "List scheduled publications for Group"
+      },
+      "post": {
+        "operationId": "schedulePublicationgroups",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "action": {
+                    "enum": [
+                      "publish"
+                    ],
+                    "type": "string"
+                  },
+                  "runAt": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "timeZone": {
+                    "description": "Optional region timezone such as Europe/London, UTC, or ±HH:mm offset retained for display; runAt remains the scheduled instant.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "action",
+                  "runAt"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Schedule Group publication change"
+      }
+    },
+    "/api/collections/groups/{id}/schedule/{jobId}": {
+      "delete": {
+        "operationId": "cancelScheduledPublicationgroups",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Cancel Group scheduled publication"
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "jobId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/api/collections/groups/{id}/share": {
+      "delete": {
+        "operationId": "custom-collection-groups-delete-param-id-share-eb9ae207f3cb",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "2XX": {
+            "description": "Endpoint-defined successful response"
+          },
+          "default": {
+            "description": "Endpoint-defined response"
+          }
+        },
+        "summary": "Disable group sharing"
+      },
+      "get": {
+        "operationId": "custom-collection-groups-get-param-id-share-eccc260bfa6d",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "2XX": {
+            "description": "Endpoint-defined successful response"
+          },
+          "default": {
+            "description": "Endpoint-defined response"
+          }
+        },
+        "summary": "Get group sharing status"
+      },
+      "post": {
+        "operationId": "custom-collection-groups-post-param-id-share-2f5633365527",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "2XX": {
+            "description": "Endpoint-defined successful response"
+          },
+          "default": {
+            "description": "Endpoint-defined response"
+          }
+        },
+        "summary": "Enable or rotate group sharing"
+      }
+    },
+    "/api/collections/groups/{id}/versions": {
+      "get": {
+        "operationId": "versionsgroups",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "List Group versions"
+      }
+    },
+    "/api/collections/groups/{id}/versions/count": {
+      "get": {
+        "operationId": "countVersionsgroups",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountEnvelope"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Count Group versions"
+      }
+    },
+    "/api/collections/groups/{id}/versions/{revision}": {
+      "get": {
+        "operationId": "versiongroups",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Read Group version"
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "revision",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ]
+    },
+    "/api/collections/users": {
+      "get": {
+        "operationId": "listusers",
+        "parameters": [
+          {
+            "description": "One-based result page.",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "maximum": 1000000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Maximum documents returned in this page.",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSON-encoded document filter combined atomically with collection access rules.",
+            "in": "query",
+            "name": "where",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Ordered field names; prefix a field with - for descending order.",
+            "explode": true,
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "style": "form"
+          },
+          {
+            "description": "Include collection and per-document access capabilities for this page.",
+            "in": "query",
+            "name": "include-access",
+            "required": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Expand readable relationships recursively.",
+            "in": "query",
+            "name": "depth",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "maximum": 5,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSON-encoded top-level field selection.",
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSON-encoded relationship population; cannot be combined with depth.",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "docs": {
+                          "items": {
+                            "$ref": "#/components/schemas/users"
+                          },
+                          "type": "array"
+                        },
+                        "pagination": {
+                          "$ref": "#/components/schemas/Pagination"
+                        }
+                      },
+                      "required": [
+                        "docs",
+                        "pagination"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "access": {
+                          "$ref": "#/components/schemas/CollectionPageAccess"
+                        },
+                        "docs": {
+                          "items": {
+                            "$ref": "#/components/schemas/users"
+                          },
+                          "type": "array"
+                        },
+                        "pagination": {
+                          "$ref": "#/components/schemas/Pagination"
+                        }
+                      },
+                      "required": [
+                        "docs",
+                        "pagination",
+                        "access"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "List Users"
+      },
+      "post": {
+        "operationId": "createusers",
+        "parameters": null,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/usersCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/users"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Create User"
+      }
+    },
+    "/api/collections/users/bulk": {
+      "post": {
+        "operationId": "bulkusers",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Bulk mutate Users"
+      }
+    },
+    "/api/collections/users/validate": {
+      "post": {
+        "description": "Read-only advisory evaluation with normal resource and field authorization. No defaults, mutation hooks, writes, jobs, or fallback translations run. A successful check is neither authorization nor a reservation. Operational failure returns an error, never successful validation.",
+        "operationId": "liveValidateusers",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiveValidationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LiveValidationEnvelope"
+                }
+              }
+            },
+            "description": "Completed checks and explicitly skipped unavailable or malformed values"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Check opted-in fields in unsaved input"
+      }
+    },
+    "/api/collections/users/{id}": {
+      "delete": {
+        "operationId": "deleteusers",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/users"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Delete User"
+      },
+      "get": {
+        "operationId": "findusers",
+        "parameters": [
+          {
+            "description": "Expand readable relationships recursively.",
+            "in": "query",
+            "name": "depth",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "maximum": 5,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "JSON-encoded top-level field selection.",
+            "in": "query",
+            "name": "select",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSON-encoded relationship population; cannot be combined with depth.",
+            "in": "query",
+            "name": "populate",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/users"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Find User"
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "patch": {
+        "operationId": "updateusers",
+        "parameters": null,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/usersUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/users"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Update User"
+      }
+    },
+    "/api/collections/users/{id}/copy-locale": {
+      "post": {
+        "operationId": "copyLocaleusers",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Copy localized values between locales"
+      }
+    },
+    "/api/collections/users/{id}/duplicate": {
+      "post": {
+        "operationId": "duplicateusers",
+        "parameters": null,
+        "responses": {
+          "201": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Duplicate User"
+      }
+    },
+    "/api/preferences": {
+      "delete": {
+        "operationId": "resetPreferences",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Reset current user preferences"
+      }
+    },
+    "/api/preferences/{key}": {
+      "delete": {
+        "operationId": "deletePreference",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Delete a current user preference"
+      },
+      "get": {
+        "operationId": "getPreference",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Read a current user preference"
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "key",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "put": {
+        "operationId": "setPreference",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Set a current user preference"
+      }
+    },
+    "/api/share/media/{capability}": {
+      "get": {
+        "operationId": "custom-root-get-share-media-param-capability-bc88953c3b91",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "capability",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "2XX": {
+            "description": "Endpoint-defined successful response"
+          },
+          "default": {
+            "description": "Endpoint-defined response"
+          }
+        },
+        "summary": "Read a shared image"
+      }
+    },
+    "/api/share/resolve": {
+      "post": {
+        "operationId": "custom-root-post-share-resolve-dbc6a63f8798",
+        "responses": {
+          "2XX": {
+            "description": "Endpoint-defined successful response"
+          },
+          "default": {
+            "description": "Endpoint-defined response"
+          }
+        },
+        "summary": "Read a shared group"
+      }
+    },
+    "/api/uploads/assets/grants": {
+      "post": {
+        "description": "Session-bound delivery URLs for elements that cannot send an Authorization header. The URLs never contain the session token and stop working when the session ends or read access is lost.",
+        "operationId": "createUploadGrantsassets",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadGrantsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadGrantsEnvelope"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Ridu error envelope"
+          }
+        },
+        "summary": "Create short-lived Asset delivery URLs"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AccessCapabilities": {
+        "type": "object",
+        "properties": {
+          "fields": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/FieldCapabilities"
+            },
+            "type": "object"
+          },
+          "operations": {
+            "$ref": "#/components/schemas/OperationCapabilities"
+          }
+        },
+        "required": [
+          "operations",
+          "fields"
+        ]
+      },
+      "AuthBootstrapEnvelope": {
+        "type": "object",
+        "properties": {
+          "available": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "available"
+        ]
+      },
+      "CollectionPageAccess": {
+        "type": "object",
+        "properties": {
+          "collection": {
+            "$ref": "#/components/schemas/AccessCapabilities"
+          },
+          "documents": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/AccessCapabilities"
+            },
+            "type": "object"
+          }
+        },
+        "required": [
+          "collection",
+          "documents"
+        ]
+      },
+      "CollectionSelectionEnvelope": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/CollectionSelectionItem"
+            },
+            "type": "array"
+          },
+          "totalDocs": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "items",
+          "totalDocs"
+        ]
+      },
+      "CollectionSelectionInput": {
+        "type": "object",
+        "properties": {
+          "trash": {
+            "type": "boolean"
+          },
+          "where": {
+            "type": "object"
+          }
+        }
+      },
+      "CollectionSelectionItem": {
+        "type": "object",
+        "properties": {
+          "access": {
+            "$ref": "#/components/schemas/AccessCapabilities"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "access"
+        ]
+      },
+      "CountEnvelope": {
+        "type": "object",
+        "properties": {
+          "totalDocs": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "totalDocs"
+        ]
+      },
+      "ErrorEnvelope": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorPayload"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
+      "ErrorPayload": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "details": {},
+          "issues": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationIssue"
+            },
+            "type": "array"
+          },
+          "message": {
+            "type": "string"
+          },
+          "requestId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "code",
+          "status",
+          "message",
+          "issues"
+        ]
+      },
+      "FieldCapabilities": {
+        "type": "object",
+        "properties": {
+          "create": {
+            "type": "boolean"
+          },
+          "read": {
+            "type": "boolean"
+          },
+          "update": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "read",
+          "create",
+          "update"
+        ]
+      },
+      "GlobalLiveValidationRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "Raw partial document values; omitted update values are retained from exact-locale storage. Malformed typed values are skipped.",
+            "type": "object"
+          },
+          "embedded": {
+            "items": {
+              "$ref": "#/components/schemas/LiveValidationEmbeddedScope"
+            },
+            "maxItems": 8,
+            "type": "array"
+          },
+          "fields": {
+            "description": "Current snapshot field paths, relative to the innermost embedded payload when supplied.",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 64,
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "data",
+          "fields"
+        ],
+        "description": "Advisory unsaved input. Only explicitly opted-in fields run; this never replaces save validation. Maximum request body: 1 MiB.",
+        "additionalProperties": false
+      },
+      "LiveValidationEmbeddedScope": {
+        "type": "object",
+        "properties": {
+          "caseTag": {
+            "type": "string"
+          },
+          "data": {
+            "description": "Detached unsaved payload, including its declared stable identity and case discriminator.",
+            "type": "object"
+          },
+          "field": {
+            "type": "string"
+          },
+          "identity": {
+            "type": "string"
+          },
+          "treeKey": {
+            "type": "string"
+          },
+          "variantSlug": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "field",
+          "treeKey",
+          "caseTag",
+          "variantSlug",
+          "identity",
+          "data"
+        ],
+        "additionalProperties": false
+      },
+      "LiveValidationEnvelope": {
+        "type": "object",
+        "properties": {
+          "evaluations": {
+            "items": {
+              "$ref": "#/components/schemas/LiveValidationEvaluation"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "evaluations"
+        ]
+      },
+      "LiveValidationEvaluation": {
+        "type": "object",
+        "properties": {
+          "issues": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationIssue"
+            },
+            "type": "array"
+          },
+          "path": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "checked",
+              "skipped"
+            ],
+            "type": "string"
+          },
+          "target": {
+            "description": "Opaque stable correlation token; applications never construct it.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "status",
+          "issues"
+        ]
+      },
+      "LiveValidationRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "Raw partial document values; omitted update values are retained from exact-locale storage. Malformed typed values are skipped.",
+            "type": "object"
+          },
+          "embedded": {
+            "items": {
+              "$ref": "#/components/schemas/LiveValidationEmbeddedScope"
+            },
+            "maxItems": 8,
+            "type": "array"
+          },
+          "fields": {
+            "description": "Current snapshot field paths, relative to the innermost embedded payload when supplied.",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 64,
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "id": {
+            "maxLength": 512,
+            "type": "string"
+          }
+        },
+        "required": [
+          "data",
+          "fields"
+        ],
+        "description": "Advisory unsaved input. Only explicitly opted-in fields run; this never replaces save validation. Maximum request body: 1 MiB.",
+        "additionalProperties": false
+      },
+      "LoginRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "transport": {
+            "description": "cookie sets the HttpOnly session cookie; token returns the session token in the response body instead.",
+            "enum": [
+              "cookie",
+              "token"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "OperationCapabilities": {
+        "type": "object",
+        "properties": {
+          "admin": {
+            "type": "boolean"
+          },
+          "create": {
+            "type": "boolean"
+          },
+          "delete": {
+            "type": "boolean"
+          },
+          "deletePermanent": {
+            "type": "boolean"
+          },
+          "duplicate": {
+            "type": "boolean"
+          },
+          "publish": {
+            "type": "boolean"
+          },
+          "read": {
+            "type": "boolean"
+          },
+          "readVersions": {
+            "type": "boolean"
+          },
+          "restoreDeleted": {
+            "type": "boolean"
+          },
+          "selectAll": {
+            "type": "boolean"
+          },
+          "unpublish": {
+            "type": "boolean"
+          },
+          "update": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "admin",
+          "create",
+          "read",
+          "readVersions",
+          "update",
+          "delete",
+          "duplicate",
+          "publish",
+          "unpublish",
+          "restoreDeleted",
+          "deletePermanent",
+          "selectAll"
+        ]
+      },
+      "Pagination": {
+        "type": "object",
+        "properties": {
+          "hasNextPage": {
+            "type": "boolean"
+          },
+          "hasPrevPage": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "totalDocs": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "page",
+          "limit",
+          "totalDocs",
+          "totalPages",
+          "hasNextPage",
+          "hasPrevPage"
+        ]
+      },
+      "UploadGrantsEnvelope": {
+        "type": "object",
+        "properties": {
+          "grants": {
+            "items": {
+              "properties": {
+                "expiresAt": {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "url",
+                "expiresAt"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "grants"
+        ]
+      },
+      "UploadGrantsRequest": {
+        "type": "object",
+        "properties": {
+          "expiresIn": {
+            "maximum": 3600,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "items": {
+            "items": {
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id"
+              ],
+              "type": "object"
+            },
+            "maxItems": 100,
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
+        ]
+      },
+      "ValidationIssue": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "collectionId": {
+            "type": "string"
+          },
+          "fieldId": {
+            "type": "string"
+          },
+          "globalId": {
+            "type": "string"
+          },
+          "locale": {
+            "description": "Exact content locale addressed by the issue; never a fallback locale.",
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "target": {
+            "description": "Opaque occurrence identity for correlating field issues across repeated rows.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "path",
+          "message"
+        ]
+      },
+      "admins": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "email": {
+            "format": "email",
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "adminsCreate": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "format": "email",
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "email",
+          "password"
+        ],
+        "additionalProperties": false
+      },
+      "adminsUpdate": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "format": "email",
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "assets": {
+        "type": "object",
+        "properties": {
+          "alt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "cropHeight": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cropWidth": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cropX": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cropY": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "filename": {
+            "type": "string"
+          },
+          "filesize": {
+            "type": "number"
+          },
+          "focalX": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "focalY": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "group": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "height": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "objectKey": {
+            "type": "string"
+          },
+          "owner": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "sizes": {},
+          "source": {},
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "url": {
+            "type": "string"
+          },
+          "width": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "assetsCreate": {
+        "type": "object",
+        "properties": {
+          "alt": {
+            "anyOf": [
+              {
+                "maxLength": 200,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "group": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "owner",
+          "group"
+        ],
+        "additionalProperties": false
+      },
+      "assetsUpdate": {
+        "type": "object",
+        "properties": {
+          "alt": {
+            "anyOf": [
+              {
+                "maxLength": 200,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "group": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "bookmarks": {
+        "type": "object",
+        "properties": {
+          "caption": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "favicon": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "group": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "images": {
+            "anyOf": [
+              {
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "object"
+                    }
+                  ]
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "kind": {
+            "enum": [
+              "link",
+              "text",
+              "media"
+            ],
+            "type": "string"
+          },
+          "owner": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "position": {
+            "type": "string"
+          },
+          "previewImage": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "videoID": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "videoProvider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "bookmarksCreate": {
+        "type": "object",
+        "properties": {
+          "caption": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "favicon": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "group": {
+            "type": "string"
+          },
+          "images": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "kind": {
+            "enum": [
+              "link",
+              "text",
+              "media"
+            ],
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "position": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "previewImage": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "title": {
+            "anyOf": [
+              {
+                "maxLength": 500,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "videoID": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "videoProvider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "owner",
+          "group",
+          "kind",
+          "position"
+        ],
+        "additionalProperties": false
+      },
+      "bookmarksUpdate": {
+        "type": "object",
+        "properties": {
+          "caption": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "favicon": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "group": {
+            "type": "string"
+          },
+          "images": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "kind": {
+            "enum": [
+              "link",
+              "text",
+              "media"
+            ],
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "position": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "previewImage": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "title": {
+            "anyOf": [
+              {
+                "maxLength": 500,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "videoID": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "videoProvider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "groups": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "owner": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "rank": {
+            "type": "string"
+          },
+          "shareVersion": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sharingEnabled": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "groupsCreate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "rank": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "shareVersion": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sharingEnabled": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "owner",
+          "name",
+          "rank"
+        ],
+        "additionalProperties": false
+      },
+      "groupsUpdate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "rank": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "shareVersion": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sharingEnabled": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "users": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "email": {
+            "format": "email",
+            "type": "string"
+          },
+          "groupMutationVersion": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "usersCreate": {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
+            "format": "email",
+            "type": "string"
+          },
+          "groupMutationVersion": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "displayName",
+          "email",
+          "password"
+        ],
+        "additionalProperties": false
+      },
+      "usersUpdate": {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
+            "format": "email",
+            "type": "string"
+          },
+          "groupMutationVersion": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

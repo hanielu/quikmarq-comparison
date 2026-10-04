@@ -1,0 +1,162 @@
+/* Public collections reuse the same narrow, grouped feed. */
+.shared-shell {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+.shared-header {
+	border-bottom: 1px solid var(--line);
+}
+.shared-header-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: min(calc(100% - 2rem), 42rem);
+	min-height: 4.65rem;
+	margin: 0 auto;
+}
+.public-brand {
+	font-size: 1.18rem;
+}
+.shared-badge {
+	padding: 0.38rem 0.6rem;
+	color: var(--muted);
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	font-size: 0.68rem;
+	font-weight: 500;
+}
+.shared-main,
+.shared-collection {
+	width: min(calc(100% - 2rem), 42rem);
+	margin: 0 auto;
+	padding: 3rem 0 6rem;
+	flex: 1;
+}
+.shared-hero {
+	padding-bottom: 1.5rem;
+	border-bottom: 1px solid var(--line);
+}
+.shared-hero h1 {
+	margin: 0.2rem 0 0.45rem;
+	font-size: 2rem;
+}
+.shared-hero > p:last-child {
+	margin: 0;
+	color: var(--muted);
+	font-size: 0.8rem;
+}
+.shared-bookmarks .bookmark-card {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: start;
+	gap: 0.7rem;
+	padding: 1rem;
+}
+.shared-bookmarks .bookmark-card-top {
+	grid-column: 2;
+	grid-row: 1;
+	padding: 0;
+}
+.shared-bookmarks .bookmark-body {
+	grid-column: 1;
+	grid-row: 1;
+}
+.shared-bookmarks .card-cover,
+.shared-bookmarks .media-grid {
+	grid-column: 2;
+	grid-row: 2;
+	width: 6rem;
+	height: 4.2rem;
+	overflow: hidden;
+	border-radius: 0.4rem;
+}
+.shared-bookmarks .media-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1px;
+}
+.shared-bookmarks .media-grid.many {
+	grid-template-columns: repeat(2, 1fr);
+}
+.shared-bookmarks .card-description {
+	margin: 0.35rem 0 0;
+	color: var(--muted);
+	font-size: 0.75rem;
+	line-height: 1.5;
+}
+.public-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+	margin-top: 0.65rem;
+	font-size: 0.72rem;
+	font-weight: 600;
+	text-decoration: underline;
+	text-underline-offset: 0.15em;
+}
+.shared-footer {
+	padding: 1.5rem;
+	color: var(--muted);
+	border-top: 1px solid var(--line);
+	font-size: 0.73rem;
+	text-align: center;
+}
+.shared-footer a {
+	color: var(--ink);
+	font-family: "Righteous", sans-serif;
+}
+
+/* Legal copy stays launch-ready but uses the same quiet shell. */
+.legal-shell {
+	display: flex;
+	flex-direction: column;
+	width: min(calc(100% - 2rem), 48rem);
+	min-height: 100vh;
+	margin: 0 auto;
+}
+.legal-header,
+.legal-shell header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 5.5rem;
+	border-bottom: 1px solid var(--line);
+}
+.legal-shell header > a:last-child {
+	font-size: 0.8rem;
+	font-weight: 600;
+}
+.legal-content,
+.legal-shell main {
+	max-width: 41rem;
+	padding: 4rem 0;
+}
+.legal-shell h1 {
+	margin: 0.4rem 0 1.2rem;
+}
+.legal-shell h2 {
+	margin: 2.2rem 0 0.55rem;
+	font-size: 1rem;
+}
+.legal-shell p {
+	color: var(--muted);
+	font-size: 0.9rem;
+	line-height: 1.75;
+}
+.legal-shell .legal-intro {
+	color: var(--ink);
+	font-size: 1.03rem;
+}
+.legal-shell .legal-note {
+	margin-top: 3rem;
+	font-size: 0.72rem;
+}
+.legal-shell footer {
+	display: flex;
+	gap: 1rem;
+	margin-top: auto;
+	padding: 1.6rem 0;
+	border-top: 1px solid var(--line);
+	font-size: 0.76rem;
+}

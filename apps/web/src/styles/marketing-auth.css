@@ -1,0 +1,261 @@
+/* Marketing: a direct continuation of the original Quikmarq composition. */
+.marketing-shell {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+.marketing-nav {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: min(calc(100% - 2.5rem), 72rem);
+	min-height: 5.8rem;
+	margin: 0 auto;
+}
+.marketing-nav::after {
+	position: absolute;
+	right: 50%;
+	bottom: 0;
+	width: 100vw;
+	border-bottom: 1px solid var(--line);
+	content: "";
+	transform: translateX(50%);
+}
+.marketing-nav nav {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+	font-size: 0.84rem;
+	font-weight: 600;
+}
+.marketing-nav nav > a:first-child {
+	padding: 0.65rem;
+}
+.marketing-nav nav > a:first-child:hover {
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+}
+.hero {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 25rem;
+	gap: clamp(4rem, 9vw, 8rem);
+	align-items: start;
+	width: min(calc(100% - 2.5rem), 72rem);
+	margin: 0 auto;
+	padding: clamp(4rem, 9vw, 7rem) 0 6rem;
+}
+.hero-copy {
+	min-width: 0;
+}
+.hero h1 {
+	max-width: 43rem;
+	margin: 0 0 2.6rem;
+	font-size: clamp(2.65rem, 4vw, 3rem);
+	line-height: 1.08;
+	letter-spacing: -0.05em;
+}
+.hero-features {
+	width: min(100%, 35rem);
+	overflow: hidden;
+	background: color-mix(in srgb, var(--surface) 35%, transparent);
+	border: 1px solid var(--line-strong);
+	border-radius: 0.55rem;
+}
+.feature-item + .feature-item {
+	border-top: 1px solid var(--line);
+}
+.feature-item summary {
+	position: relative;
+	padding: 1.15rem 1.3rem;
+	font-family: "Lexend", "Inter", sans-serif;
+	font-size: 0.98rem;
+	font-weight: 500;
+	list-style: none;
+}
+.feature-item summary::-webkit-details-marker {
+	display: none;
+}
+.feature-item summary::after {
+	position: absolute;
+	right: 1.2rem;
+	color: var(--muted);
+	content: "+";
+	font-family: "Inter", sans-serif;
+	font-weight: 400;
+}
+.feature-item[open] summary::after {
+	content: "−";
+}
+.feature-item p {
+	margin: 0;
+	padding: 0 1.3rem 1.3rem;
+	color: var(--muted);
+	font-size: 0.94rem;
+	line-height: 1.65;
+}
+.hero-auth-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 36.5rem;
+	padding: 3rem 2.5rem;
+	text-align: center;
+	background: var(--surface);
+	border: 1px solid var(--line);
+	border-radius: 0.8rem;
+	box-shadow: 0 22px 28px rgba(0, 0, 0, 0.12);
+}
+.hero-auth-card h2 {
+	margin-bottom: 1rem;
+	font-size: 1.25rem;
+}
+.hero-auth-card > p:first-of-type {
+	margin: 0 auto 1.5rem;
+	color: var(--muted);
+	font-size: 0.88rem;
+	line-height: 1.6;
+}
+.hero-auth-switch {
+	margin: 1rem 0 0;
+	color: var(--muted);
+	font-size: 0.78rem;
+}
+.hero-auth-switch a {
+	color: var(--ink);
+	font-weight: 600;
+	text-decoration: underline;
+	text-underline-offset: 0.18em;
+}
+.marketing-footer {
+	display: flex;
+	justify-content: space-between;
+	width: min(calc(100% - 2.5rem), 72rem);
+	margin: auto auto 0;
+	padding: 1.5rem 0 2rem;
+	color: var(--muted);
+	border-top: 1px solid var(--line);
+	font-size: 0.75rem;
+}
+.marketing-footer div {
+	display: flex;
+	gap: 1rem;
+}
+.marketing-footer a:hover,
+.legal-shell a:hover {
+	color: var(--ink);
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+}
+
+/* Email/password auth keeps the old neutral split-card visual language. */
+.auth-page {
+	display: grid;
+	grid-template-columns: minmax(22rem, 1fr) minmax(28rem, 1fr);
+	min-height: 100vh;
+	background: var(--bg);
+}
+.auth-side {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: clamp(2rem, 5vw, 4.5rem);
+	border-right: 1px solid var(--line);
+}
+.auth-side-copy {
+	max-width: 35rem;
+}
+.auth-side h1 {
+	margin-bottom: 1.25rem;
+	font-size: clamp(2.4rem, 4.7vw, 4.2rem);
+	line-height: 1.08;
+}
+.auth-side-copy p,
+.auth-side-foot {
+	color: var(--muted);
+	line-height: 1.65;
+}
+.auth-side-copy p {
+	max-width: 26rem;
+	font-size: 1rem;
+}
+.auth-side-foot {
+	font-size: 0.78rem;
+}
+.auth-main {
+	display: grid;
+	place-items: center;
+	padding: 2rem 1.25rem;
+}
+.auth-card {
+	width: min(100%, 27.5rem);
+	padding: clamp(1.6rem, 4vw, 2.5rem);
+	background: var(--surface);
+	border: 1px solid var(--line);
+	border-radius: 0.8rem;
+	box-shadow: var(--shadow);
+}
+.auth-card h2 {
+	margin-bottom: 0.45rem;
+	font-size: 1.65rem;
+}
+.auth-card > p {
+	color: var(--muted);
+	font-size: 0.9rem;
+	line-height: 1.55;
+}
+.form-stack {
+	display: flex;
+	flex-direction: column;
+	gap: 0.95rem;
+	margin-top: 1.5rem;
+}
+.form-stack label {
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+	font-size: 0.8rem;
+	font-weight: 600;
+}
+.form-stack input,
+.form-stack textarea,
+.share-link input {
+	width: 100%;
+	padding: 0.78rem 0.85rem;
+	color: var(--ink);
+	background: var(--bg);
+	border: 1px solid var(--line-strong);
+	border-radius: 0.7rem;
+	outline: none;
+}
+.form-stack textarea {
+	line-height: 1.55;
+	resize: vertical;
+}
+.form-stack input:focus,
+.form-stack textarea:focus,
+.share-link input:focus {
+	border-color: var(--ink);
+	box-shadow: 0 0 0 2px color-mix(in srgb, var(--ink) 12%, transparent);
+}
+.auth-switch {
+	margin: 1.35rem 0 0;
+	text-align: center;
+	font-size: 0.84rem;
+}
+.auth-switch a,
+.auth-legal a {
+	color: var(--ink);
+	font-weight: 600;
+	text-decoration: underline;
+	text-underline-offset: 0.16em;
+}
+.auth-card .auth-legal {
+	margin: 1.6rem 0 0;
+	color: var(--muted);
+	font-size: 0.71rem;
+	line-height: 1.55;
+	text-align: center;
+}

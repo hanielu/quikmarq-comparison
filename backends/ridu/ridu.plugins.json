@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "plugins": [
+    {
+      "key": "richtext",
+      "goPackage": "github.com/riducms/ridu/plugins/richtext",
+      "goVersion": "v0.13.0",
+      "constructor": "New",
+      "adminPackage": "@riducms/plugin-richtext",
+      "adminVersion": "0.13.0"
+    }
+  ]
+}

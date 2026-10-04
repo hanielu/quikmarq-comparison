@@ -1,0 +1,143 @@
+/* Dialogs and editor drawer. */
+.dialog-overlay {
+	position: fixed;
+	z-index: 70;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.6);
+}
+.dialog-content {
+	position: fixed;
+	z-index: 71;
+	top: 50%;
+	left: 50%;
+	width: min(94vw, 29rem);
+	max-height: min(90vh, 47rem);
+	padding: 1.25rem;
+	overflow-y: auto;
+	background: var(--surface);
+	border: 1px solid var(--line);
+	border-radius: 0.85rem;
+	box-shadow: var(--shadow);
+	transform: translate(-50%, -50%);
+}
+.dialog-heading {
+	display: flex;
+	align-items: start;
+	justify-content: space-between;
+	gap: 1rem;
+}
+.dialog-heading h2 {
+	margin: 0.08rem 0 0.3rem;
+	font-size: 1.1rem;
+}
+.dialog-heading p {
+	margin: 0;
+	color: var(--muted);
+	font-size: 0.78rem;
+	line-height: 1.5;
+}
+.dialog-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 0.5rem;
+	margin-top: 1rem;
+}
+.dialog-actions.space-between {
+	justify-content: space-between;
+}
+.editor-dialog {
+	top: 1rem;
+	right: 1rem;
+	bottom: 1rem;
+	left: auto;
+	width: min(90vw, 34rem);
+	max-height: none;
+	border-radius: 1rem;
+	transform: none;
+}
+.editor-tabs {
+	display: flex;
+	gap: 0.25rem;
+	margin-top: 1.2rem;
+	padding-bottom: 0.6rem;
+	border-bottom: 1px solid var(--line);
+}
+.editor-tabs button {
+	display: flex;
+	align-items: center;
+	gap: 0.38rem;
+	padding: 0.5rem 0.65rem;
+	color: var(--muted);
+	background: transparent;
+	border: 0;
+	border-radius: 0.4rem;
+	font-size: 0.78rem;
+	font-weight: 600;
+}
+.editor-tabs button.active {
+	color: var(--ink);
+	background: var(--surface-alt);
+}
+.editor-form .form-stack {
+	margin-top: 1.1rem;
+}
+.input-with-action {
+	display: flex;
+	gap: 0.4rem;
+}
+.input-with-action input {
+	min-width: 0;
+}
+.selected-files {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+}
+.selected-files span {
+	display: flex;
+	align-items: center;
+	gap: 0.3rem;
+	padding: 0.38rem 0.5rem;
+	background: var(--surface-alt);
+	border-radius: 0.4rem;
+	font-size: 0.7rem;
+}
+.selected-files button {
+	display: grid;
+	padding: 0;
+	place-items: center;
+	color: var(--muted);
+	background: transparent;
+	border: 0;
+}
+.share-link {
+	display: flex;
+	gap: 0.45rem;
+	margin: 1.4rem 0 0.6rem;
+}
+.share-link input {
+	min-width: 0;
+	font-size: 0.74rem;
+}
+.share-link button {
+	flex: none;
+}
+.shortcut-list {
+	margin: 1.3rem 0 0;
+}
+.shortcut-list div {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.65rem 0;
+	border-bottom: 1px solid var(--line);
+	font-size: 0.78rem;
+}
+.shortcut-list dt {
+	color: var(--ink);
+}
+.shortcut-list dd {
+	margin: 0;
+	color: var(--muted);
+	font-weight: 600;
+}

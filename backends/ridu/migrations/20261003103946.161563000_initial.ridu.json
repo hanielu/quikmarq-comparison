@@ -1,0 +1,1698 @@
+{
+  "version": 1,
+  "name": "initial",
+  "planner": {
+    "name": "ridu-sqlite",
+    "version": "1.1.0"
+  },
+  "minimumRunnerContract": 1,
+  "previousArtifactDigest": "",
+  "fromDigest": "",
+  "toDigest": "fd495c69bdd264a5de1f3f35d5aeeed019b678e71b5f2e34cb44f6b47f763d7d",
+  "after": {
+    "version": 1,
+    "application": {
+      "name": "Quikmarq",
+      "admin": {
+        "userCollectionId": "admins",
+        "userCollectionSlug": "admins"
+      },
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/bookmark-metadata",
+          "summary": "Read public web page metadata"
+        },
+        {
+          "method": "POST",
+          "path": "/share/resolve",
+          "summary": "Read a shared group"
+        },
+        {
+          "method": "GET",
+          "path": "/share/media/:capability",
+          "summary": "Read a shared image"
+        }
+      ]
+    },
+    "collections": [
+      {
+        "id": "admins",
+        "slug": "admins",
+        "labels": {
+          "singular": "Admin",
+          "plural": "Admins"
+        },
+        "admin": {},
+        "capabilities": {
+          "auth": true,
+          "upload": false,
+          "versions": false,
+          "trash": false
+        },
+        "authSettings": {
+          "identityField": "email",
+          "sessionDurationSeconds": 86400,
+          "passwordMinLength": 8,
+          "passwordMaxBytes": 72,
+          "passwordBcryptCost": 10,
+          "maxLoginAttempts": 5,
+          "lockDurationSeconds": 600,
+          "passwordReset": false,
+          "passwordResetTokenDurationSeconds": 3600,
+          "verifyEmail": false,
+          "verificationTokenDurationSeconds": 86400,
+          "apiKeys": false
+        },
+        "fields": [
+          {
+            "id": "admins-email",
+            "name": "email",
+            "path": "email",
+            "type": "email",
+            "category": "scalar",
+            "required": true,
+            "unique": true,
+            "admin": {
+              "label": "Email"
+            }
+          }
+        ]
+      },
+      {
+        "id": "users",
+        "slug": "users",
+        "labels": {
+          "singular": "User",
+          "plural": "Users"
+        },
+        "admin": {},
+        "capabilities": {
+          "auth": true,
+          "upload": false,
+          "versions": false,
+          "trash": false
+        },
+        "authSettings": {
+          "identityField": "email",
+          "sessionDurationSeconds": 86400,
+          "passwordMinLength": 8,
+          "passwordMaxBytes": 72,
+          "passwordBcryptCost": 10,
+          "maxLoginAttempts": 5,
+          "lockDurationSeconds": 600,
+          "passwordReset": false,
+          "passwordResetTokenDurationSeconds": 3600,
+          "verifyEmail": false,
+          "verificationTokenDurationSeconds": 86400,
+          "apiKeys": false
+        },
+        "fields": [
+          {
+            "id": "users-email",
+            "name": "email",
+            "path": "email",
+            "type": "email",
+            "category": "scalar",
+            "required": true,
+            "unique": true,
+            "admin": {
+              "label": "Email"
+            }
+          },
+          {
+            "id": "users-display-name",
+            "name": "displayName",
+            "path": "displayName",
+            "type": "text",
+            "category": "scalar",
+            "required": true,
+            "unique": false,
+            "admin": {
+              "label": "Display Name"
+            },
+            "text": {
+              "maxLength": 80
+            }
+          },
+          {
+            "id": "users-group-mutation-version",
+            "name": "groupMutationVersion",
+            "path": "groupMutationVersion",
+            "type": "number",
+            "category": "scalar",
+            "required": false,
+            "unique": false,
+            "queryRestricted": true,
+            "default": "0",
+            "admin": {
+              "label": "Group Mutation Version",
+              "hidden": true
+            },
+            "number": {}
+          }
+        ]
+      },
+      {
+        "id": "groups",
+        "slug": "groups",
+        "labels": {
+          "singular": "Group",
+          "plural": "Groups"
+        },
+        "admin": {
+          "useAsTitle": "name"
+        },
+        "capabilities": {
+          "auth": false,
+          "upload": false,
+          "versions": true,
+          "trash": false
+        },
+        "versionSettings": {
+          "drafts": false,
+          "maxPerDocument": 1,
+          "autosaveIntervalSeconds": 30
+        },
+        "fields": [
+          {
+            "id": "groups-owner",
+            "name": "owner",
+            "path": "owner",
+            "type": "relationship",
+            "category": "relationship",
+            "required": true,
+            "unique": false,
+            "index": true,
+            "admin": {
+              "label": "Owner"
+            },
+            "relationship": {
+              "collectionId": "users",
+              "collectionSlug": "users",
+              "onDelete": "restrict"
+            }
+          },
+          {
+            "id": "groups-name",
+            "name": "name",
+            "path": "name",
+            "type": "text",
+            "category": "scalar",
+            "required": true,
+            "unique": false,
+            "admin": {
+              "label": "Name"
+            },
+            "text": {
+              "maxLength": 80
+            }
+          },
+          {
+            "id": "groups-rank",
+            "name": "rank",
+            "path": "rank",
+            "type": "text",
+            "category": "scalar",
+            "required": true,
+            "unique": false,
+            "index": true,
+            "admin": {
+              "label": "Rank"
+            },
+            "text": {}
+          },
+          {
+            "id": "groups-sharing-enabled",
+            "name": "sharingEnabled",
+            "path": "sharingEnabled",
+            "type": "checkbox",
+            "category": "scalar",
+            "required": false,
+            "unique": false,
+            "default": "false",
+            "admin": {
+              "label": "Sharing Enabled"
+            }
+          },
+          {
+            "id": "groups-share-version",
+            "name": "shareVersion",
+            "path": "shareVersion",
+            "type": "number",
+            "category": "scalar",
+            "required": false,
+            "unique": false,
+            "default": "0",
+            "admin": {
+              "label": "Share Version"
+            },
+            "number": {}
+          }
+        ],
+        "endpoints": [
+          {
+            "method": "GET",
+            "path": "/:id/share",
+            "summary": "Get group sharing status"
+          },
+          {
+            "method": "POST",
+            "path": "/:id/share",
+            "summary": "Enable or rotate group sharing"
+          },
+          {
+            "method": "DELETE",
+            "path": "/:id/share",
+            "summary": "Disable group sharing"
+          }
+        ]
+      },
+      {
+        "id": "assets",
+        "slug": "assets",
+        "labels": {
+          "singular": "Asset",
+          "plural": "Assets"
+        },
+        "admin": {},
+        "capabilities": {
+          "auth": false,
+          "upload": true,
+          "versions": false,
+          "trash": false
+        },
+        "uploadSettings": {
+          "maxFileSize": 4000000,
+          "mimeTypes": [
+            "image/jpeg",
+            "image/png"
+          ],
+          "private": true,
+          "imageSizes": [
+            {
+              "name": "thumb",
+              "width": 320,
+              "height": 320,
+              "fit": "cover"
+            }
+          ]
+        },
+        "fields": [
+          {
+            "id": "assets-owner",
+            "name": "owner",
+            "path": "owner",
+            "type": "relationship",
+            "category": "relationship",
+            "required": true,
+            "unique": false,
+            "index": true,
+            "admin": {
+              "label": "Owner"
+            },
+            "relationship": {
+              "collectionId": "users",
+              "collectionSlug": "users",
+              "onDelete": "restrict"
+            }
+          },
+          {
+            "id": "assets-group",
+            "name": "group",
+            "path": "group",
+            "type": "relationship",
+            "category": "relationship",
+            "required": true,
+            "unique": false,
+            "index": true,
+            "admin": {
+              "label": "Group"
+            },
+            "relationship": {
+              "collectionId": "groups",
+              "collectionSlug": "groups",
+              "onDelete": "restrict"
+            }
+          },
+          {
+            "id": "assets-alt",
+            "name": "alt",
+            "path": "alt",
+            "type": "text",
+            "category": "scalar",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Alt",
+              "description": "Image accessibility text. Edit the bookmark's Caption to change the text shown in Quikmarq."
+            },
+            "text": {
+              "maxLength": 200
+            }
+          },
+          {
+            "id": "upload-filename",
+            "name": "filename",
+            "path": "filename",
+            "type": "text",
+            "category": "upload",
+            "required": true,
+            "unique": false,
+            "admin": {
+              "label": "Filename",
+              "readOnly": true
+            },
+            "text": {}
+          },
+          {
+            "id": "upload-mime-type",
+            "name": "mimeType",
+            "path": "mimeType",
+            "type": "text",
+            "category": "upload",
+            "required": true,
+            "unique": false,
+            "admin": {
+              "label": "MIME type",
+              "readOnly": true
+            },
+            "text": {}
+          },
+          {
+            "id": "upload-filesize",
+            "name": "filesize",
+            "path": "filesize",
+            "type": "number",
+            "category": "upload",
+            "required": true,
+            "unique": false,
+            "admin": {
+              "label": "File size",
+              "readOnly": true
+            }
+          },
+          {
+            "id": "upload-url",
+            "name": "url",
+            "path": "url",
+            "type": "text",
+            "category": "upload",
+            "required": true,
+            "unique": false,
+            "admin": {
+              "label": "URL",
+              "readOnly": true
+            },
+            "text": {}
+          },
+          {
+            "id": "upload-object-key",
+            "name": "objectKey",
+            "path": "objectKey",
+            "type": "text",
+            "category": "upload",
+            "required": true,
+            "unique": false,
+            "index": true,
+            "admin": {
+              "label": "Object key",
+              "readOnly": true
+            },
+            "text": {}
+          },
+          {
+            "id": "upload-width",
+            "name": "width",
+            "path": "width",
+            "type": "number",
+            "category": "upload",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Width",
+              "readOnly": true
+            }
+          },
+          {
+            "id": "upload-height",
+            "name": "height",
+            "path": "height",
+            "type": "number",
+            "category": "upload",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Height",
+              "readOnly": true
+            }
+          },
+          {
+            "id": "upload-source",
+            "name": "source",
+            "path": "source",
+            "type": "json",
+            "category": "upload",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Image source",
+              "readOnly": true
+            }
+          },
+          {
+            "id": "upload-sizes",
+            "name": "sizes",
+            "path": "sizes",
+            "type": "json",
+            "category": "upload",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Generated sizes",
+              "readOnly": true
+            }
+          },
+          {
+            "id": "upload-focal-x",
+            "name": "focalX",
+            "path": "focalX",
+            "type": "number",
+            "category": "upload",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Focal X",
+              "readOnly": true
+            }
+          },
+          {
+            "id": "upload-focal-y",
+            "name": "focalY",
+            "path": "focalY",
+            "type": "number",
+            "category": "upload",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Focal Y",
+              "readOnly": true
+            }
+          },
+          {
+            "id": "upload-crop-x",
+            "name": "cropX",
+            "path": "cropX",
+            "type": "number",
+            "category": "upload",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Crop X",
+              "readOnly": true
+            }
+          },
+          {
+            "id": "upload-crop-y",
+            "name": "cropY",
+            "path": "cropY",
+            "type": "number",
+            "category": "upload",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Crop Y",
+              "readOnly": true
+            }
+          },
+          {
+            "id": "upload-crop-width",
+            "name": "cropWidth",
+            "path": "cropWidth",
+            "type": "number",
+            "category": "upload",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Crop width",
+              "readOnly": true
+            }
+          },
+          {
+            "id": "upload-crop-height",
+            "name": "cropHeight",
+            "path": "cropHeight",
+            "type": "number",
+            "category": "upload",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Crop height",
+              "readOnly": true
+            }
+          }
+        ]
+      },
+      {
+        "id": "bookmarks",
+        "slug": "bookmarks",
+        "labels": {
+          "singular": "Bookmark",
+          "plural": "Bookmarks"
+        },
+        "admin": {
+          "useAsTitle": "title"
+        },
+        "capabilities": {
+          "auth": false,
+          "upload": false,
+          "versions": true,
+          "trash": false
+        },
+        "versionSettings": {
+          "drafts": false,
+          "maxPerDocument": 1,
+          "autosaveIntervalSeconds": 30
+        },
+        "fields": [
+          {
+            "id": "bookmarks-owner",
+            "name": "owner",
+            "path": "owner",
+            "type": "relationship",
+            "category": "relationship",
+            "required": true,
+            "unique": false,
+            "index": true,
+            "admin": {
+              "label": "Owner"
+            },
+            "relationship": {
+              "collectionId": "users",
+              "collectionSlug": "users",
+              "onDelete": "restrict"
+            }
+          },
+          {
+            "id": "bookmarks-group",
+            "name": "group",
+            "path": "group",
+            "type": "relationship",
+            "category": "relationship",
+            "required": true,
+            "unique": false,
+            "index": true,
+            "admin": {
+              "label": "Group"
+            },
+            "relationship": {
+              "collectionId": "groups",
+              "collectionSlug": "groups",
+              "onDelete": "restrict"
+            }
+          },
+          {
+            "id": "bookmarks-kind",
+            "name": "kind",
+            "path": "kind",
+            "type": "select",
+            "category": "scalar",
+            "required": true,
+            "unique": false,
+            "admin": {
+              "label": "Kind"
+            },
+            "select": {
+              "options": [
+                {
+                  "value": "link",
+                  "label": "Link"
+                },
+                {
+                  "value": "text",
+                  "label": "Text"
+                },
+                {
+                  "value": "media",
+                  "label": "Media"
+                }
+              ]
+            }
+          },
+          {
+            "id": "bookmarks-position",
+            "name": "position",
+            "path": "position",
+            "type": "text",
+            "category": "scalar",
+            "required": true,
+            "unique": false,
+            "index": true,
+            "admin": {
+              "label": "Position"
+            },
+            "text": {}
+          },
+          {
+            "id": "bookmarks-url",
+            "name": "url",
+            "path": "url",
+            "type": "text",
+            "category": "scalar",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Url"
+            },
+            "text": {}
+          },
+          {
+            "id": "bookmarks-title",
+            "name": "title",
+            "path": "title",
+            "type": "text",
+            "category": "scalar",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Title"
+            },
+            "text": {
+              "maxLength": 500
+            }
+          },
+          {
+            "id": "bookmarks-description",
+            "name": "description",
+            "path": "description",
+            "type": "textarea",
+            "category": "scalar",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Description"
+            },
+            "textarea": {}
+          },
+          {
+            "id": "bookmarks-favicon",
+            "name": "favicon",
+            "path": "favicon",
+            "type": "text",
+            "category": "scalar",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Favicon"
+            },
+            "text": {}
+          },
+          {
+            "id": "bookmarks-preview-image",
+            "name": "previewImage",
+            "path": "previewImage",
+            "type": "text",
+            "category": "scalar",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Preview Image"
+            },
+            "text": {}
+          },
+          {
+            "id": "bookmarks-video-provider",
+            "name": "videoProvider",
+            "path": "videoProvider",
+            "type": "text",
+            "category": "scalar",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Video Provider"
+            },
+            "text": {}
+          },
+          {
+            "id": "bookmarks-video-i-d",
+            "name": "videoID",
+            "path": "videoID",
+            "type": "text",
+            "category": "scalar",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Video I D"
+            },
+            "text": {}
+          },
+          {
+            "id": "bookmarks-text",
+            "name": "text",
+            "path": "text",
+            "type": "textarea",
+            "category": "scalar",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Text"
+            },
+            "textarea": {}
+          },
+          {
+            "id": "bookmarks-caption",
+            "name": "caption",
+            "path": "caption",
+            "type": "textarea",
+            "category": "scalar",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Caption",
+              "description": "Text shown on this media bookmark in Quikmarq, shared by all of its images."
+            },
+            "textarea": {}
+          },
+          {
+            "id": "bookmarks-images",
+            "name": "images",
+            "path": "images",
+            "type": "upload",
+            "category": "upload",
+            "required": false,
+            "unique": false,
+            "admin": {
+              "label": "Images"
+            },
+            "upload": {
+              "collectionId": "assets",
+              "collectionSlug": "assets",
+              "hasMany": true,
+              "onDelete": "restrict"
+            }
+          }
+        ]
+      }
+    ],
+    "plugins": [
+      {
+        "key": "richtext",
+        "goPackage": "github.com/riducms/ridu/plugins/richtext",
+        "apiVersion": 1,
+        "admin": {
+          "package": "@riducms/plugin-richtext",
+          "export": "richTextAdminPlugin",
+          "apiVersion": 1,
+          "pairingVersion": 1
+        },
+        "fieldTypes": [
+          {
+            "embeddedTypes": [
+              "blocks.block"
+            ],
+            "key": "richtext",
+            "typescriptPackage": "@riducms/sdk/richtext",
+            "typescriptOutput": "RichTextDocument",
+            "typescriptInput": "RichTextDocumentInput",
+            "goPackage": "github.com/riducms/ridu/plugins/richtext",
+            "goType": "Document",
+            "jsonSchema": {
+              "$id": "https://riducms.com/schemas/richtext/document/1",
+              "type": "object",
+              "required": [
+                "version",
+                "root"
+              ],
+              "properties": {
+                "version": {
+                  "const": 1
+                },
+                "root": {
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/node"
+                    },
+                    {
+                      "properties": {
+                        "type": {
+                          "const": "root"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "$defs": {
+                "node": {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "enum": [
+                        "root",
+                        "paragraph",
+                        "heading",
+                        "quote",
+                        "text",
+                        "linebreak",
+                        "link",
+                        "list",
+                        "listitem",
+                        "code",
+                        "horizontalrule",
+                        "upload",
+                        "relationship",
+                        "block"
+                      ]
+                    },
+                    "version": {
+                      "const": 1
+                    },
+                    "children": {
+                      "type": "array",
+                      "items": {
+                        "allOf": [
+                          {
+                            "$ref": "#/$defs/node"
+                          },
+                          {
+                            "properties": {
+                              "type": {
+                                "not": {
+                                  "const": "root"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "fields": {
+                      "type": "object"
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "format": {
+                      "type": [
+                        "integer",
+                        "string"
+                      ]
+                    },
+                    "detail": {
+                      "type": "integer"
+                    },
+                    "mode": {
+                      "enum": [
+                        "normal",
+                        "token",
+                        "segmented"
+                      ]
+                    },
+                    "style": {
+                      "type": "string"
+                    },
+                    "textFormat": {
+                      "type": "integer"
+                    },
+                    "textStyle": {
+                      "type": "string"
+                    },
+                    "direction": {
+                      "enum": [
+                        "ltr",
+                        "rtl",
+                        null
+                      ]
+                    },
+                    "indent": {
+                      "type": "integer"
+                    },
+                    "tag": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rel": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "title": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "listType": {
+                      "type": "string"
+                    },
+                    "start": {
+                      "type": "integer"
+                    },
+                    "value": {
+                      "type": "integer"
+                    },
+                    "checked": {
+                      "type": "boolean"
+                    },
+                    "language": {
+                      "type": "string"
+                    },
+                    "theme": {
+                      "type": "string"
+                    },
+                    "relationTo": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "caption": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "block"
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "type",
+                          "version",
+                          "fields"
+                        ],
+                        "properties": {
+                          "type": {
+                            "const": "block"
+                          },
+                          "version": {
+                            "const": 1
+                          },
+                          "fields": {
+                            "type": "object"
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "else": {
+                        "not": {
+                          "required": [
+                            "fields"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "enum": [
+                              "root",
+                              "paragraph",
+                              "heading",
+                              "quote",
+                              "link",
+                              "list",
+                              "listitem",
+                              "code"
+                            ]
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "children"
+                        ]
+                      },
+                      "else": {
+                        "not": {
+                          "required": [
+                            "children"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "text"
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "text"
+                        ],
+                        "properties": {
+                          "format": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "else": {
+                        "properties": {
+                          "format": {
+                            "enum": [
+                              "",
+                              "left",
+                              "center",
+                              "right",
+                              "justify",
+                              "start",
+                              "end"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "root"
+                          }
+                        }
+                      },
+                      "then": {
+                        "propertyNames": {
+                          "enum": [
+                            "type",
+                            "version",
+                            "children",
+                            "direction",
+                            "format",
+                            "indent"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "paragraph"
+                          }
+                        }
+                      },
+                      "then": {
+                        "propertyNames": {
+                          "enum": [
+                            "type",
+                            "version",
+                            "children",
+                            "direction",
+                            "format",
+                            "indent",
+                            "textFormat",
+                            "textStyle"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "quote"
+                          }
+                        }
+                      },
+                      "then": {
+                        "propertyNames": {
+                          "enum": [
+                            "type",
+                            "version",
+                            "children",
+                            "direction",
+                            "format",
+                            "indent",
+                            "textFormat",
+                            "textStyle"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "heading"
+                          }
+                        }
+                      },
+                      "then": {
+                        "propertyNames": {
+                          "enum": [
+                            "type",
+                            "version",
+                            "children",
+                            "direction",
+                            "format",
+                            "indent",
+                            "textFormat",
+                            "textStyle",
+                            "tag"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "link"
+                          }
+                        }
+                      },
+                      "then": {
+                        "propertyNames": {
+                          "enum": [
+                            "type",
+                            "version",
+                            "children",
+                            "direction",
+                            "format",
+                            "indent",
+                            "textFormat",
+                            "textStyle",
+                            "url",
+                            "target",
+                            "rel",
+                            "title"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "list"
+                          }
+                        }
+                      },
+                      "then": {
+                        "propertyNames": {
+                          "enum": [
+                            "type",
+                            "version",
+                            "children",
+                            "direction",
+                            "format",
+                            "indent",
+                            "textFormat",
+                            "textStyle",
+                            "listType",
+                            "start",
+                            "tag"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "listitem"
+                          }
+                        }
+                      },
+                      "then": {
+                        "propertyNames": {
+                          "enum": [
+                            "type",
+                            "version",
+                            "children",
+                            "direction",
+                            "format",
+                            "indent",
+                            "textFormat",
+                            "textStyle",
+                            "value",
+                            "checked"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "code"
+                          }
+                        }
+                      },
+                      "then": {
+                        "propertyNames": {
+                          "enum": [
+                            "type",
+                            "version",
+                            "children",
+                            "direction",
+                            "format",
+                            "indent",
+                            "textFormat",
+                            "textStyle",
+                            "language",
+                            "theme"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "text"
+                          }
+                        }
+                      },
+                      "then": {
+                        "propertyNames": {
+                          "enum": [
+                            "type",
+                            "version",
+                            "text",
+                            "detail",
+                            "format",
+                            "mode",
+                            "style"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "linebreak"
+                          }
+                        }
+                      },
+                      "then": {
+                        "propertyNames": {
+                          "enum": [
+                            "type",
+                            "version"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "horizontalrule"
+                          }
+                        }
+                      },
+                      "then": {
+                        "propertyNames": {
+                          "enum": [
+                            "type",
+                            "version"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "upload"
+                          }
+                        }
+                      },
+                      "then": {
+                        "propertyNames": {
+                          "enum": [
+                            "type",
+                            "version",
+                            "relationTo",
+                            "id",
+                            "format",
+                            "caption"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "relationship"
+                          }
+                        }
+                      },
+                      "then": {
+                        "propertyNames": {
+                          "enum": [
+                            "type",
+                            "version",
+                            "relationTo",
+                            "id",
+                            "format"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "heading"
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "tag"
+                        ],
+                        "properties": {
+                          "tag": {
+                            "enum": [
+                              "h1",
+                              "h2",
+                              "h3",
+                              "h4",
+                              "h5",
+                              "h6"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "list"
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "listType"
+                        ],
+                        "properties": {
+                          "listType": {
+                            "enum": [
+                              "bullet",
+                              "number",
+                              "check"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "phases": [
+    {
+      "id": "phase-001",
+      "mode": "transaction",
+      "physicalContractVersion": 1,
+      "beforePhysicalDigest": "0d3e20adcc90bbe3a25ae6e61f9418a57edd47b63dafc8744c71b3b34c19a4af",
+      "afterPhysicalDigest": "9c4fb2164608290d8233c3f7a73ae15af5289230f8da19b9713984a366aae50b",
+      "steps": [
+        {
+          "id": "step-0001",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 001",
+          "payload": {
+            "sql": "CREATE TABLE IF NOT EXISTS ridu_sqlite_schema (\n  singleton INTEGER PRIMARY KEY CHECK (singleton = 1),\n  manifest_digest TEXT NOT NULL,\n  expected_artifact_digest TEXT NOT NULL,\n  manifest_json TEXT NOT NULL CHECK (json_valid(manifest_json)),\n  applied_at INTEGER NOT NULL\n) STRICT"
+          }
+        },
+        {
+          "id": "step-0002",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 002",
+          "payload": {
+            "sql": "CREATE TABLE IF NOT EXISTS ridu_documents (\n  collection_id TEXT NOT NULL,\n  id TEXT NOT NULL,\n  created_at INTEGER NOT NULL,\n  updated_at INTEGER NOT NULL,\n  deleted_at INTEGER,\n  status TEXT NOT NULL DEFAULT '',\n  revision INTEGER NOT NULL DEFAULT 0,\n  values_json TEXT NOT NULL CHECK (json_valid(values_json)),\n  PRIMARY KEY (collection_id, id)\n) STRICT"
+          }
+        },
+        {
+          "id": "step-0003",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 003",
+          "payload": {
+            "sql": "CREATE INDEX IF NOT EXISTS ridu_documents_active\n  ON ridu_documents (collection_id, deleted_at, id)"
+          }
+        },
+        {
+          "id": "step-0004",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 004",
+          "payload": {
+            "sql": "CREATE INDEX IF NOT EXISTS ridu_documents_status\n  ON ridu_documents (collection_id, status, deleted_at, id)"
+          }
+        },
+        {
+          "id": "step-0005",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 005",
+          "payload": {
+            "sql": "CREATE TABLE IF NOT EXISTS ridu_unique_values (\n  collection_id TEXT NOT NULL,\n  index_key TEXT NOT NULL,\n  value_key TEXT NOT NULL,\n  document_id TEXT NOT NULL,\n  PRIMARY KEY (collection_id, index_key, value_key),\n  FOREIGN KEY (collection_id, document_id)\n    REFERENCES ridu_documents (collection_id, id) ON DELETE CASCADE\n) STRICT"
+          }
+        },
+        {
+          "id": "step-0006",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 006",
+          "payload": {
+            "sql": "CREATE INDEX IF NOT EXISTS ridu_unique_values_document\n  ON ridu_unique_values (collection_id, document_id)"
+          }
+        },
+        {
+          "id": "step-0007",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 007",
+          "payload": {
+            "sql": "CREATE TABLE IF NOT EXISTS ridu_document_references (\n  owner_collection_id TEXT NOT NULL,\n  owner_document_id TEXT NOT NULL,\n  field_id TEXT NOT NULL,\n  target_collection_id TEXT NOT NULL,\n  target_document_id TEXT NOT NULL,\n  locale TEXT NOT NULL DEFAULT '',\n  occurrence INTEGER NOT NULL,\n  PRIMARY KEY (\n    owner_collection_id, owner_document_id, field_id,\n    target_collection_id, target_document_id, locale, occurrence\n  ),\n  FOREIGN KEY (owner_collection_id, owner_document_id)\n    REFERENCES ridu_documents (collection_id, id) ON DELETE CASCADE,\n  FOREIGN KEY (target_collection_id, target_document_id)\n    REFERENCES ridu_documents (collection_id, id) ON DELETE RESTRICT\n) STRICT"
+          }
+        },
+        {
+          "id": "step-0008",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 008",
+          "payload": {
+            "sql": "CREATE INDEX IF NOT EXISTS ridu_document_references_target\n  ON ridu_document_references (target_collection_id, target_document_id)"
+          }
+        },
+        {
+          "id": "step-0009",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 009",
+          "payload": {
+            "sql": "CREATE TABLE IF NOT EXISTS ridu_versions (\n\t  id TEXT NOT NULL,\n\t  collection_id TEXT NOT NULL,\n\t  document_id TEXT NOT NULL,\n\t  revision INTEGER NOT NULL,\n\t  status TEXT NOT NULL,\n\t  snapshot_json TEXT NOT NULL CHECK (json_valid(snapshot_json)),\n\t  created_at INTEGER NOT NULL,\n\t  PRIMARY KEY (collection_id, document_id, revision)\n\t) STRICT"
+          }
+        },
+        {
+          "id": "step-0010",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 010",
+          "payload": {
+            "sql": "CREATE INDEX IF NOT EXISTS ridu_versions_document\n  ON ridu_versions (collection_id, document_id, revision DESC)"
+          }
+        },
+        {
+          "id": "step-0011",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 011",
+          "payload": {
+            "sql": "CREATE TABLE IF NOT EXISTS ridu_auth_credentials (\n  collection_id TEXT NOT NULL,\n  user_id TEXT NOT NULL,\n  password_hash BLOB NOT NULL,\n  failed_login_attempts INTEGER NOT NULL DEFAULT 0,\n  locked_until INTEGER,\n  verified INTEGER NOT NULL DEFAULT 0 CHECK (verified IN (0, 1)),\n  PRIMARY KEY (collection_id, user_id),\n  FOREIGN KEY (collection_id, user_id)\n    REFERENCES ridu_documents (collection_id, id) ON DELETE CASCADE\n) STRICT"
+          }
+        },
+        {
+          "id": "step-0012",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 012",
+          "payload": {
+            "sql": "CREATE TABLE IF NOT EXISTS ridu_auth_sessions (\n  token_hash TEXT PRIMARY KEY,\n  id TEXT NOT NULL UNIQUE,\n  collection_id TEXT NOT NULL,\n  user_id TEXT NOT NULL,\n  expires_at INTEGER NOT NULL,\n  created_at INTEGER NOT NULL,\n  last_seen_at INTEGER NOT NULL,\n  ip_address TEXT NOT NULL DEFAULT '',\n  user_agent TEXT NOT NULL DEFAULT '',\n  FOREIGN KEY (collection_id, user_id)\n    REFERENCES ridu_auth_credentials (collection_id, user_id) ON DELETE CASCADE\n) STRICT"
+          }
+        },
+        {
+          "id": "step-0013",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 013",
+          "payload": {
+            "sql": "CREATE INDEX IF NOT EXISTS ridu_auth_sessions_user\n  ON ridu_auth_sessions (collection_id, user_id, expires_at)"
+          }
+        },
+        {
+          "id": "step-0014",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 014",
+          "payload": {
+            "sql": "CREATE INDEX IF NOT EXISTS ridu_auth_sessions_expiry_idx\n  ON ridu_auth_sessions (expires_at, token_hash)"
+          }
+        },
+        {
+          "id": "step-0015",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 015",
+          "payload": {
+            "sql": "CREATE TABLE IF NOT EXISTS ridu_auth_tokens (\n  token_hash TEXT PRIMARY KEY,\n  purpose TEXT NOT NULL,\n  collection_id TEXT NOT NULL,\n  user_id TEXT NOT NULL,\n  expires_at INTEGER NOT NULL,\n  created_at INTEGER NOT NULL,\n  FOREIGN KEY (collection_id, user_id)\n    REFERENCES ridu_auth_credentials (collection_id, user_id) ON DELETE CASCADE\n) STRICT"
+          }
+        },
+        {
+          "id": "step-0016",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 016",
+          "payload": {
+            "sql": "CREATE TABLE IF NOT EXISTS ridu_auth_api_keys (\n  id TEXT PRIMARY KEY,\n  token_hash TEXT NOT NULL UNIQUE,\n  collection_id TEXT NOT NULL,\n  user_id TEXT NOT NULL,\n  name TEXT NOT NULL,\n  created_at INTEGER NOT NULL,\n  last_used_at INTEGER,\n  expires_at INTEGER,\n  FOREIGN KEY (collection_id, user_id)\n    REFERENCES ridu_auth_credentials (collection_id, user_id) ON DELETE CASCADE\n) STRICT"
+          }
+        },
+        {
+          "id": "step-0017",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 017",
+          "payload": {
+            "sql": "CREATE INDEX IF NOT EXISTS ridu_auth_api_keys_user\n  ON ridu_auth_api_keys (collection_id, user_id, created_at)"
+          }
+        },
+        {
+          "id": "step-0018",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 018",
+          "payload": {
+            "sql": "CREATE INDEX IF NOT EXISTS ridu_auth_api_keys_expiry_idx\n  ON ridu_auth_api_keys (expires_at, id) WHERE expires_at IS NOT NULL"
+          }
+        },
+        {
+          "id": "step-0019",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 019",
+          "payload": {
+            "sql": "CREATE TABLE IF NOT EXISTS ridu_auth_rate_limits (\n  key_hash TEXT PRIMARY KEY,\n  attempts INTEGER NOT NULL,\n  expires_at INTEGER NOT NULL\n) STRICT"
+          }
+        },
+        {
+          "id": "step-0020",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 020",
+          "payload": {
+            "sql": "CREATE INDEX IF NOT EXISTS ridu_auth_rate_limits_expiry_idx\n  ON ridu_auth_rate_limits (expires_at, key_hash)"
+          }
+        },
+        {
+          "id": "step-0021",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 021",
+          "payload": {
+            "sql": "CREATE TABLE IF NOT EXISTS ridu_preferences (\n  collection_id TEXT NOT NULL,\n  user_id TEXT NOT NULL,\n  key TEXT NOT NULL,\n  value_json TEXT NOT NULL CHECK (json_valid(value_json)),\n  updated_at INTEGER NOT NULL,\n  PRIMARY KEY (collection_id, user_id, key),\n  FOREIGN KEY (collection_id, user_id)\n    REFERENCES ridu_documents (collection_id, id) ON DELETE CASCADE\n) STRICT"
+          }
+        },
+        {
+          "id": "step-0022",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 022",
+          "payload": {
+            "sql": "CREATE TABLE IF NOT EXISTS ridu_document_locks (\n  collection_id TEXT NOT NULL,\n  document_id TEXT NOT NULL,\n  owner_collection_id TEXT NOT NULL,\n  owner_id TEXT NOT NULL,\n  owner_label TEXT NOT NULL,\n  created_at INTEGER NOT NULL,\n  updated_at INTEGER NOT NULL,\n  expires_at INTEGER NOT NULL,\n  PRIMARY KEY (collection_id, document_id),\n  FOREIGN KEY (collection_id, document_id)\n    REFERENCES ridu_documents (collection_id, id) ON DELETE CASCADE,\n  FOREIGN KEY (owner_collection_id, owner_id)\n    REFERENCES ridu_documents (collection_id, id) ON DELETE CASCADE\n) STRICT"
+          }
+        },
+        {
+          "id": "step-0023",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 023",
+          "payload": {
+            "sql": "CREATE TABLE IF NOT EXISTS ridu_tasks (\n  id TEXT PRIMARY KEY,\n  slug TEXT NOT NULL,\n  queue TEXT NOT NULL,\n  concurrency_key TEXT NOT NULL DEFAULT '',\n  input_json TEXT NOT NULL CHECK (json_valid(input_json)),\n  output_json TEXT CHECK (output_json IS NULL OR json_valid(output_json)),\n  state TEXT NOT NULL,\n  run_at INTEGER NOT NULL,\n  attempts INTEGER NOT NULL,\n  max_attempts INTEGER NOT NULL,\n  retry_delay_ns INTEGER NOT NULL,\n  max_retry_delay_ns INTEGER NOT NULL,\n  backoff TEXT NOT NULL,\n  timeout_ns INTEGER NOT NULL,\n  retention_ns INTEGER NOT NULL,\n  lease_token TEXT NOT NULL DEFAULT '',\n  lease_expires_at INTEGER,\n  target_collection_id TEXT,\n  target_document_id TEXT,\n  requested_by_collection_id TEXT,\n  requested_by_document_id TEXT,\n  last_error_code TEXT NOT NULL DEFAULT '',\n  last_error TEXT NOT NULL DEFAULT '',\n  created_at INTEGER NOT NULL,\n  updated_at INTEGER NOT NULL,\n  completed_at INTEGER,\n  retain_until INTEGER,\n  CHECK ((target_collection_id IS NULL) = (target_document_id IS NULL)),\n  CHECK ((requested_by_collection_id IS NULL) = (requested_by_document_id IS NULL)),\n  FOREIGN KEY (target_collection_id, target_document_id)\n    REFERENCES ridu_documents (collection_id, id) ON DELETE CASCADE,\n  FOREIGN KEY (requested_by_collection_id, requested_by_document_id)\n    REFERENCES ridu_documents (collection_id, id) ON DELETE CASCADE\n) STRICT"
+          }
+        },
+        {
+          "id": "step-0024",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 024",
+          "payload": {
+            "sql": "CREATE INDEX IF NOT EXISTS ridu_tasks_due\n  ON ridu_tasks (state, run_at, queue, id)"
+          }
+        },
+        {
+          "id": "step-0025",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 025",
+          "payload": {
+            "sql": "CREATE INDEX IF NOT EXISTS ridu_tasks_active_concurrency\n  ON ridu_tasks (queue, concurrency_key, state, lease_expires_at)"
+          }
+        },
+        {
+          "id": "step-0026",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 026",
+          "payload": {
+            "sql": "CREATE INDEX IF NOT EXISTS ridu_tasks_target\n  ON ridu_tasks (target_collection_id, target_document_id, slug, created_at)"
+          }
+        },
+        {
+          "id": "step-0027",
+          "kind": "sql",
+          "executorVersion": 1,
+          "name": "install SQLite schema object 027",
+          "payload": {
+            "sql": "CREATE INDEX IF NOT EXISTS ridu_tasks_retention\n  ON ridu_tasks (retain_until, id)"
+          }
+        },
+        {
+          "id": "step-0028",
+          "kind": "assert_schema",
+          "executorVersion": 1,
+          "name": "verify resulting SQLite schema",
+          "payload": {}
+        }
+      ]
+    }
+  ],
+  "risks": []
+}

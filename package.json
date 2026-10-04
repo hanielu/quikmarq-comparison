@@ -1,0 +1,55 @@
+{
+  "name": "quikmarq-comparison",
+  "private": true,
+  "type": "module",
+  "packageManager": "bun@1.4.0",
+  "workspaces": [
+    "apps/web",
+    "backends/payload",
+    "backends/ridu",
+    "backends/ridu/admin"
+  ],
+  "scripts": {
+    "dev": "bun scripts/develop.ts",
+    "check": "bun run check:payload && bun run check:ridu && bun run check:web && bun run check:scripts",
+    "check:payload": "bun run --cwd backends/payload check",
+    "check:ridu": "bun run --cwd backends/ridu check",
+    "check:web": "bun run --cwd apps/web check",
+    "check:scripts": "tsc --noEmit",
+    "test": "bun run --cwd backends/payload test && bun run --cwd backends/ridu test && bun run --cwd apps/web test && bun test scripts/tests",
+    "generate": "bun run --cwd backends/payload generate && bun run --cwd backends/ridu generate && bun scripts/sync-ridu-client.ts",
+    "generate:check": "bun run --cwd backends/ridu generate:check && bun scripts/sync-ridu-client.ts --check",
+    "build:ridu": "bun run --cwd backends/ridu build",
+    "build:payload": "bun run --cwd backends/payload build",
+    "build:web": "bun run --cwd apps/web build",
+    "build:comparison": "bun scripts/build-comparison.ts",
+    "test:e2e": "bun run --cwd apps/web test:e2e",
+    "railway:plan": "bun scripts/railway-plan.ts",
+    "serve:comparison": "bun scripts/serve-comparison.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.6",
+    "railway": "3.12.0",
+    "typescript": "~6.0.2"
+  },
+  "overrides": {
+    "nanoid": "3.3.18",
+    "lexical": "0.49.0",
+    "@lexical/devtools-core": "0.49.0",
+    "@lexical/dragon": "0.49.0",
+    "@lexical/hashtag": "0.49.0",
+    "@lexical/history": "0.49.0",
+    "@lexical/html": "0.49.0",
+    "@lexical/link": "0.49.0",
+    "@lexical/list": "0.49.0",
+    "@lexical/mark": "0.49.0",
+    "@lexical/markdown": "0.49.0",
+    "@lexical/overflow": "0.49.0",
+    "@lexical/plain-text": "0.49.0",
+    "@lexical/rich-text": "0.49.0",
+    "@lexical/table": "0.49.0",
+    "@lexical/text": "0.49.0",
+    "@lexical/utils": "0.49.0",
+    "@lexical/yjs": "0.49.0"
+  }
+}

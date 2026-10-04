@@ -1,0 +1,29 @@
+{
+	"name": "@quikmarq/ridu",
+	"private": true,
+	"packageManager": "bun@1.4.0",
+	"dependencies": {
+		"@riducms/plugin-richtext": "0.13.0",
+		"@riducms/plugin-seo": "0.13.0",
+		"@riducms/plugin-form-builder": "0.13.0",
+		"@riducms/sdk": "0.13.0"
+	},
+	"devDependencies": {
+		"@riducms/cli": "0.13.0",
+		"tsx": "4.23.13"
+	},
+	"scripts": {
+		"dev": "ridu dev",
+		"dev:admin": "bun run --cwd admin dev",
+		"ridu": "ridu",
+		"generate": "ridu generate",
+		"generate:check": "ridu generate --check",
+		"check": "ridu check",
+		"test": "go test ./...",
+		"build": "ridu build --output ./dist/quikmarq-ridu",
+		"migrate": "ridu migrate up",
+		"migrate:status": "ridu migrate status",
+		"migrate:verify": "ridu migrate verify",
+		"start": "./dist/quikmarq-ridu serve-with-migrations"
+	}
+}

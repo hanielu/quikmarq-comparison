@@ -1,0 +1,11 @@
+node_modules/
+.ridu/
+.env
+.env.*
+!.env.example
+dist/
+*.log
+.DS_Store
+!internal/adminassets/dist/
+internal/adminassets/dist/*
+!internal/adminassets/dist/placeholder.txt

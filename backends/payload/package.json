@@ -1,0 +1,34 @@
+{
+  "name": "@quikmarq/payload",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0 --port ${PORT:-3000}",
+    "build": "node scripts/build.mjs",
+    "start": "node .next/standalone/backends/payload/server.js",
+    "check": "next typegen && tsc --noEmit",
+    "generate": "payload generate:types",
+    "test": "bun test tests",
+    "generate:types": "payload generate:types",
+    "generate:importmap": "payload generate:importmap",
+    "migrate": "payload migrate",
+    "migrate:create": "payload migrate:create"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.901.0",
+    "@payloadcms/db-sqlite": "3.90.2",
+    "@payloadcms/next": "3.90.2",
+    "@payloadcms/storage-s3": "3.90.2",
+    "next": "16.3.8",
+    "payload": "3.90.2",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "sharp": "0.35.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.9.3"
+  }
+}

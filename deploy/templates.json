@@ -1,0 +1,16 @@
+{
+  "ridu": {
+    "name": "Quikmarq with Ridu",
+    "category": "CMS",
+    "description": "A bookmark app with RiduCMS and a shared SvelteKit frontend",
+    "overview": "deploy/template-ridu.md",
+    "url": null
+  },
+  "payload": {
+    "name": "Quikmarq with Payload",
+    "category": "CMS",
+    "description": "A bookmark app with PayloadCMS and a shared SvelteKit frontend",
+    "overview": "deploy/template-payload.md",
+    "url": null
+  }
+}

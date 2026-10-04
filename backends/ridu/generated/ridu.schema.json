@@ -1,0 +1,1424 @@
+{
+  "version": 1,
+  "application": {
+    "name": "Quikmarq",
+    "admin": {
+      "userCollectionId": "admins",
+      "userCollectionSlug": "admins"
+    },
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/bookmark-metadata",
+        "summary": "Read public web page metadata"
+      },
+      {
+        "method": "POST",
+        "path": "/share/resolve",
+        "summary": "Read a shared group"
+      },
+      {
+        "method": "GET",
+        "path": "/share/media/:capability",
+        "summary": "Read a shared image"
+      }
+    ]
+  },
+  "collections": [
+    {
+      "id": "admins",
+      "slug": "admins",
+      "labels": {
+        "singular": "Admin",
+        "plural": "Admins"
+      },
+      "admin": {},
+      "capabilities": {
+        "auth": true,
+        "upload": false,
+        "versions": false,
+        "trash": false
+      },
+      "authSettings": {
+        "identityField": "email",
+        "sessionDurationSeconds": 86400,
+        "passwordMinLength": 8,
+        "passwordMaxBytes": 72,
+        "passwordBcryptCost": 10,
+        "maxLoginAttempts": 5,
+        "lockDurationSeconds": 600,
+        "passwordReset": false,
+        "passwordResetTokenDurationSeconds": 3600,
+        "verifyEmail": false,
+        "verificationTokenDurationSeconds": 86400,
+        "apiKeys": false
+      },
+      "fields": [
+        {
+          "id": "admins-email",
+          "name": "email",
+          "path": "email",
+          "type": "email",
+          "category": "scalar",
+          "required": true,
+          "unique": true,
+          "admin": {
+            "label": "Email"
+          }
+        }
+      ]
+    },
+    {
+      "id": "users",
+      "slug": "users",
+      "labels": {
+        "singular": "User",
+        "plural": "Users"
+      },
+      "admin": {},
+      "capabilities": {
+        "auth": true,
+        "upload": false,
+        "versions": false,
+        "trash": false
+      },
+      "authSettings": {
+        "identityField": "email",
+        "sessionDurationSeconds": 86400,
+        "passwordMinLength": 8,
+        "passwordMaxBytes": 72,
+        "passwordBcryptCost": 10,
+        "maxLoginAttempts": 5,
+        "lockDurationSeconds": 600,
+        "passwordReset": false,
+        "passwordResetTokenDurationSeconds": 3600,
+        "verifyEmail": false,
+        "verificationTokenDurationSeconds": 86400,
+        "apiKeys": false
+      },
+      "fields": [
+        {
+          "id": "users-email",
+          "name": "email",
+          "path": "email",
+          "type": "email",
+          "category": "scalar",
+          "required": true,
+          "unique": true,
+          "admin": {
+            "label": "Email"
+          }
+        },
+        {
+          "id": "users-display-name",
+          "name": "displayName",
+          "path": "displayName",
+          "type": "text",
+          "category": "scalar",
+          "required": true,
+          "unique": false,
+          "admin": {
+            "label": "Display Name"
+          },
+          "text": {
+            "maxLength": 80
+          }
+        },
+        {
+          "id": "users-group-mutation-version",
+          "name": "groupMutationVersion",
+          "path": "groupMutationVersion",
+          "type": "number",
+          "category": "scalar",
+          "required": false,
+          "unique": false,
+          "queryRestricted": true,
+          "default": "0",
+          "admin": {
+            "label": "Group Mutation Version",
+            "hidden": true
+          },
+          "number": {}
+        }
+      ]
+    },
+    {
+      "id": "groups",
+      "slug": "groups",
+      "labels": {
+        "singular": "Group",
+        "plural": "Groups"
+      },
+      "admin": {
+        "useAsTitle": "name"
+      },
+      "capabilities": {
+        "auth": false,
+        "upload": false,
+        "versions": true,
+        "trash": false
+      },
+      "versionSettings": {
+        "drafts": false,
+        "maxPerDocument": 1,
+        "autosaveIntervalSeconds": 30
+      },
+      "fields": [
+        {
+          "id": "groups-owner",
+          "name": "owner",
+          "path": "owner",
+          "type": "relationship",
+          "category": "relationship",
+          "required": true,
+          "unique": false,
+          "index": true,
+          "admin": {
+            "label": "Owner"
+          },
+          "relationship": {
+            "collectionId": "users",
+            "collectionSlug": "users",
+            "onDelete": "restrict"
+          }
+        },
+        {
+          "id": "groups-name",
+          "name": "name",
+          "path": "name",
+          "type": "text",
+          "category": "scalar",
+          "required": true,
+          "unique": false,
+          "admin": {
+            "label": "Name"
+          },
+          "text": {
+            "maxLength": 80
+          }
+        },
+        {
+          "id": "groups-rank",
+          "name": "rank",
+          "path": "rank",
+          "type": "text",
+          "category": "scalar",
+          "required": true,
+          "unique": false,
+          "index": true,
+          "admin": {
+            "label": "Rank"
+          },
+          "text": {}
+        },
+        {
+          "id": "groups-sharing-enabled",
+          "name": "sharingEnabled",
+          "path": "sharingEnabled",
+          "type": "checkbox",
+          "category": "scalar",
+          "required": false,
+          "unique": false,
+          "default": "false",
+          "admin": {
+            "label": "Sharing Enabled"
+          }
+        },
+        {
+          "id": "groups-share-version",
+          "name": "shareVersion",
+          "path": "shareVersion",
+          "type": "number",
+          "category": "scalar",
+          "required": false,
+          "unique": false,
+          "default": "0",
+          "admin": {
+            "label": "Share Version"
+          },
+          "number": {}
+        }
+      ],
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/:id/share",
+          "summary": "Get group sharing status"
+        },
+        {
+          "method": "POST",
+          "path": "/:id/share",
+          "summary": "Enable or rotate group sharing"
+        },
+        {
+          "method": "DELETE",
+          "path": "/:id/share",
+          "summary": "Disable group sharing"
+        }
+      ]
+    },
+    {
+      "id": "assets",
+      "slug": "assets",
+      "labels": {
+        "singular": "Asset",
+        "plural": "Assets"
+      },
+      "admin": {},
+      "capabilities": {
+        "auth": false,
+        "upload": true,
+        "versions": false,
+        "trash": false
+      },
+      "uploadSettings": {
+        "maxFileSize": 4000000,
+        "mimeTypes": [
+          "image/jpeg",
+          "image/png"
+        ],
+        "private": true,
+        "imageSizes": [
+          {
+            "name": "thumb",
+            "width": 320,
+            "height": 320,
+            "fit": "cover"
+          }
+        ]
+      },
+      "fields": [
+        {
+          "id": "assets-owner",
+          "name": "owner",
+          "path": "owner",
+          "type": "relationship",
+          "category": "relationship",
+          "required": true,
+          "unique": false,
+          "index": true,
+          "admin": {
+            "label": "Owner"
+          },
+          "relationship": {
+            "collectionId": "users",
+            "collectionSlug": "users",
+            "onDelete": "restrict"
+          }
+        },
+        {
+          "id": "assets-group",
+          "name": "group",
+          "path": "group",
+          "type": "relationship",
+          "category": "relationship",
+          "required": true,
+          "unique": false,
+          "index": true,
+          "admin": {
+            "label": "Group"
+          },
+          "relationship": {
+            "collectionId": "groups",
+            "collectionSlug": "groups",
+            "onDelete": "restrict"
+          }
+        },
+        {
+          "id": "assets-alt",
+          "name": "alt",
+          "path": "alt",
+          "type": "text",
+          "category": "scalar",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Alt",
+            "description": "Image accessibility text. Edit the bookmark's Caption to change the text shown in Quikmarq."
+          },
+          "text": {
+            "maxLength": 200
+          }
+        },
+        {
+          "id": "upload-filename",
+          "name": "filename",
+          "path": "filename",
+          "type": "text",
+          "category": "upload",
+          "required": true,
+          "unique": false,
+          "admin": {
+            "label": "Filename",
+            "readOnly": true
+          },
+          "text": {}
+        },
+        {
+          "id": "upload-mime-type",
+          "name": "mimeType",
+          "path": "mimeType",
+          "type": "text",
+          "category": "upload",
+          "required": true,
+          "unique": false,
+          "admin": {
+            "label": "MIME type",
+            "readOnly": true
+          },
+          "text": {}
+        },
+        {
+          "id": "upload-filesize",
+          "name": "filesize",
+          "path": "filesize",
+          "type": "number",
+          "category": "upload",
+          "required": true,
+          "unique": false,
+          "admin": {
+            "label": "File size",
+            "readOnly": true
+          }
+        },
+        {
+          "id": "upload-url",
+          "name": "url",
+          "path": "url",
+          "type": "text",
+          "category": "upload",
+          "required": true,
+          "unique": false,
+          "admin": {
+            "label": "URL",
+            "readOnly": true
+          },
+          "text": {}
+        },
+        {
+          "id": "upload-object-key",
+          "name": "objectKey",
+          "path": "objectKey",
+          "type": "text",
+          "category": "upload",
+          "required": true,
+          "unique": false,
+          "index": true,
+          "admin": {
+            "label": "Object key",
+            "readOnly": true
+          },
+          "text": {}
+        },
+        {
+          "id": "upload-width",
+          "name": "width",
+          "path": "width",
+          "type": "number",
+          "category": "upload",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Width",
+            "readOnly": true
+          }
+        },
+        {
+          "id": "upload-height",
+          "name": "height",
+          "path": "height",
+          "type": "number",
+          "category": "upload",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Height",
+            "readOnly": true
+          }
+        },
+        {
+          "id": "upload-source",
+          "name": "source",
+          "path": "source",
+          "type": "json",
+          "category": "upload",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Image source",
+            "readOnly": true
+          }
+        },
+        {
+          "id": "upload-sizes",
+          "name": "sizes",
+          "path": "sizes",
+          "type": "json",
+          "category": "upload",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Generated sizes",
+            "readOnly": true
+          }
+        },
+        {
+          "id": "upload-focal-x",
+          "name": "focalX",
+          "path": "focalX",
+          "type": "number",
+          "category": "upload",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Focal X",
+            "readOnly": true
+          }
+        },
+        {
+          "id": "upload-focal-y",
+          "name": "focalY",
+          "path": "focalY",
+          "type": "number",
+          "category": "upload",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Focal Y",
+            "readOnly": true
+          }
+        },
+        {
+          "id": "upload-crop-x",
+          "name": "cropX",
+          "path": "cropX",
+          "type": "number",
+          "category": "upload",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Crop X",
+            "readOnly": true
+          }
+        },
+        {
+          "id": "upload-crop-y",
+          "name": "cropY",
+          "path": "cropY",
+          "type": "number",
+          "category": "upload",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Crop Y",
+            "readOnly": true
+          }
+        },
+        {
+          "id": "upload-crop-width",
+          "name": "cropWidth",
+          "path": "cropWidth",
+          "type": "number",
+          "category": "upload",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Crop width",
+            "readOnly": true
+          }
+        },
+        {
+          "id": "upload-crop-height",
+          "name": "cropHeight",
+          "path": "cropHeight",
+          "type": "number",
+          "category": "upload",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Crop height",
+            "readOnly": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "bookmarks",
+      "slug": "bookmarks",
+      "labels": {
+        "singular": "Bookmark",
+        "plural": "Bookmarks"
+      },
+      "admin": {
+        "useAsTitle": "title"
+      },
+      "capabilities": {
+        "auth": false,
+        "upload": false,
+        "versions": true,
+        "trash": false
+      },
+      "versionSettings": {
+        "drafts": false,
+        "maxPerDocument": 1,
+        "autosaveIntervalSeconds": 30
+      },
+      "fields": [
+        {
+          "id": "bookmarks-owner",
+          "name": "owner",
+          "path": "owner",
+          "type": "relationship",
+          "category": "relationship",
+          "required": true,
+          "unique": false,
+          "index": true,
+          "admin": {
+            "label": "Owner"
+          },
+          "relationship": {
+            "collectionId": "users",
+            "collectionSlug": "users",
+            "onDelete": "restrict"
+          }
+        },
+        {
+          "id": "bookmarks-group",
+          "name": "group",
+          "path": "group",
+          "type": "relationship",
+          "category": "relationship",
+          "required": true,
+          "unique": false,
+          "index": true,
+          "admin": {
+            "label": "Group"
+          },
+          "relationship": {
+            "collectionId": "groups",
+            "collectionSlug": "groups",
+            "onDelete": "restrict"
+          }
+        },
+        {
+          "id": "bookmarks-kind",
+          "name": "kind",
+          "path": "kind",
+          "type": "select",
+          "category": "scalar",
+          "required": true,
+          "unique": false,
+          "admin": {
+            "label": "Kind"
+          },
+          "select": {
+            "options": [
+              {
+                "value": "link",
+                "label": "Link"
+              },
+              {
+                "value": "text",
+                "label": "Text"
+              },
+              {
+                "value": "media",
+                "label": "Media"
+              }
+            ]
+          }
+        },
+        {
+          "id": "bookmarks-position",
+          "name": "position",
+          "path": "position",
+          "type": "text",
+          "category": "scalar",
+          "required": true,
+          "unique": false,
+          "index": true,
+          "admin": {
+            "label": "Position"
+          },
+          "text": {}
+        },
+        {
+          "id": "bookmarks-url",
+          "name": "url",
+          "path": "url",
+          "type": "text",
+          "category": "scalar",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Url"
+          },
+          "text": {}
+        },
+        {
+          "id": "bookmarks-title",
+          "name": "title",
+          "path": "title",
+          "type": "text",
+          "category": "scalar",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Title"
+          },
+          "text": {
+            "maxLength": 500
+          }
+        },
+        {
+          "id": "bookmarks-description",
+          "name": "description",
+          "path": "description",
+          "type": "textarea",
+          "category": "scalar",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Description"
+          },
+          "textarea": {}
+        },
+        {
+          "id": "bookmarks-favicon",
+          "name": "favicon",
+          "path": "favicon",
+          "type": "text",
+          "category": "scalar",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Favicon"
+          },
+          "text": {}
+        },
+        {
+          "id": "bookmarks-preview-image",
+          "name": "previewImage",
+          "path": "previewImage",
+          "type": "text",
+          "category": "scalar",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Preview Image"
+          },
+          "text": {}
+        },
+        {
+          "id": "bookmarks-video-provider",
+          "name": "videoProvider",
+          "path": "videoProvider",
+          "type": "text",
+          "category": "scalar",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Video Provider"
+          },
+          "text": {}
+        },
+        {
+          "id": "bookmarks-video-i-d",
+          "name": "videoID",
+          "path": "videoID",
+          "type": "text",
+          "category": "scalar",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Video I D"
+          },
+          "text": {}
+        },
+        {
+          "id": "bookmarks-text",
+          "name": "text",
+          "path": "text",
+          "type": "textarea",
+          "category": "scalar",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Text"
+          },
+          "textarea": {}
+        },
+        {
+          "id": "bookmarks-caption",
+          "name": "caption",
+          "path": "caption",
+          "type": "textarea",
+          "category": "scalar",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Caption",
+            "description": "Text shown on this media bookmark in Quikmarq, shared by all of its images."
+          },
+          "textarea": {}
+        },
+        {
+          "id": "bookmarks-images",
+          "name": "images",
+          "path": "images",
+          "type": "upload",
+          "category": "upload",
+          "required": false,
+          "unique": false,
+          "admin": {
+            "label": "Images"
+          },
+          "upload": {
+            "collectionId": "assets",
+            "collectionSlug": "assets",
+            "hasMany": true,
+            "onDelete": "restrict"
+          }
+        }
+      ]
+    }
+  ],
+  "plugins": [
+    {
+      "key": "richtext",
+      "goPackage": "github.com/riducms/ridu/plugins/richtext",
+      "apiVersion": 1,
+      "admin": {
+        "package": "@riducms/plugin-richtext",
+        "export": "richTextAdminPlugin",
+        "apiVersion": 1,
+        "pairingVersion": 1
+      },
+      "fieldTypes": [
+        {
+          "embeddedTypes": [
+            "blocks.block"
+          ],
+          "key": "richtext",
+          "typescriptPackage": "@riducms/sdk/richtext",
+          "typescriptOutput": "RichTextDocument",
+          "typescriptInput": "RichTextDocumentInput",
+          "goPackage": "github.com/riducms/ridu/plugins/richtext",
+          "goType": "Document",
+          "jsonSchema": {
+            "$id": "https://riducms.com/schemas/richtext/document/1",
+            "type": "object",
+            "required": [
+              "version",
+              "root"
+            ],
+            "properties": {
+              "version": {
+                "const": 1
+              },
+              "root": {
+                "allOf": [
+                  {
+                    "$ref": "#/$defs/node"
+                  },
+                  {
+                    "properties": {
+                      "type": {
+                        "const": "root"
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "$defs": {
+              "node": {
+                "type": "object",
+                "required": [
+                  "type"
+                ],
+                "properties": {
+                  "type": {
+                    "enum": [
+                      "root",
+                      "paragraph",
+                      "heading",
+                      "quote",
+                      "text",
+                      "linebreak",
+                      "link",
+                      "list",
+                      "listitem",
+                      "code",
+                      "horizontalrule",
+                      "upload",
+                      "relationship",
+                      "block"
+                    ]
+                  },
+                  "version": {
+                    "const": 1
+                  },
+                  "children": {
+                    "type": "array",
+                    "items": {
+                      "allOf": [
+                        {
+                          "$ref": "#/$defs/node"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "not": {
+                                "const": "root"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "fields": {
+                    "type": "object"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "format": {
+                    "type": [
+                      "integer",
+                      "string"
+                    ]
+                  },
+                  "detail": {
+                    "type": "integer"
+                  },
+                  "mode": {
+                    "enum": [
+                      "normal",
+                      "token",
+                      "segmented"
+                    ]
+                  },
+                  "style": {
+                    "type": "string"
+                  },
+                  "textFormat": {
+                    "type": "integer"
+                  },
+                  "textStyle": {
+                    "type": "string"
+                  },
+                  "direction": {
+                    "enum": [
+                      "ltr",
+                      "rtl",
+                      null
+                    ]
+                  },
+                  "indent": {
+                    "type": "integer"
+                  },
+                  "tag": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "target": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "rel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "title": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "listType": {
+                    "type": "string"
+                  },
+                  "start": {
+                    "type": "integer"
+                  },
+                  "value": {
+                    "type": "integer"
+                  },
+                  "checked": {
+                    "type": "boolean"
+                  },
+                  "language": {
+                    "type": "string"
+                  },
+                  "theme": {
+                    "type": "string"
+                  },
+                  "relationTo": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "caption": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "block"
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "type",
+                        "version",
+                        "fields"
+                      ],
+                      "properties": {
+                        "type": {
+                          "const": "block"
+                        },
+                        "version": {
+                          "const": 1
+                        },
+                        "fields": {
+                          "type": "object"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "else": {
+                      "not": {
+                        "required": [
+                          "fields"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "enum": [
+                            "root",
+                            "paragraph",
+                            "heading",
+                            "quote",
+                            "link",
+                            "list",
+                            "listitem",
+                            "code"
+                          ]
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "children"
+                      ]
+                    },
+                    "else": {
+                      "not": {
+                        "required": [
+                          "children"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "text"
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "text"
+                      ],
+                      "properties": {
+                        "format": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "else": {
+                      "properties": {
+                        "format": {
+                          "enum": [
+                            "",
+                            "left",
+                            "center",
+                            "right",
+                            "justify",
+                            "start",
+                            "end"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "root"
+                        }
+                      }
+                    },
+                    "then": {
+                      "propertyNames": {
+                        "enum": [
+                          "type",
+                          "version",
+                          "children",
+                          "direction",
+                          "format",
+                          "indent"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "paragraph"
+                        }
+                      }
+                    },
+                    "then": {
+                      "propertyNames": {
+                        "enum": [
+                          "type",
+                          "version",
+                          "children",
+                          "direction",
+                          "format",
+                          "indent",
+                          "textFormat",
+                          "textStyle"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "quote"
+                        }
+                      }
+                    },
+                    "then": {
+                      "propertyNames": {
+                        "enum": [
+                          "type",
+                          "version",
+                          "children",
+                          "direction",
+                          "format",
+                          "indent",
+                          "textFormat",
+                          "textStyle"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "heading"
+                        }
+                      }
+                    },
+                    "then": {
+                      "propertyNames": {
+                        "enum": [
+                          "type",
+                          "version",
+                          "children",
+                          "direction",
+                          "format",
+                          "indent",
+                          "textFormat",
+                          "textStyle",
+                          "tag"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "link"
+                        }
+                      }
+                    },
+                    "then": {
+                      "propertyNames": {
+                        "enum": [
+                          "type",
+                          "version",
+                          "children",
+                          "direction",
+                          "format",
+                          "indent",
+                          "textFormat",
+                          "textStyle",
+                          "url",
+                          "target",
+                          "rel",
+                          "title"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "list"
+                        }
+                      }
+                    },
+                    "then": {
+                      "propertyNames": {
+                        "enum": [
+                          "type",
+                          "version",
+                          "children",
+                          "direction",
+                          "format",
+                          "indent",
+                          "textFormat",
+                          "textStyle",
+                          "listType",
+                          "start",
+                          "tag"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "listitem"
+                        }
+                      }
+                    },
+                    "then": {
+                      "propertyNames": {
+                        "enum": [
+                          "type",
+                          "version",
+                          "children",
+                          "direction",
+                          "format",
+                          "indent",
+                          "textFormat",
+                          "textStyle",
+                          "value",
+                          "checked"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "code"
+                        }
+                      }
+                    },
+                    "then": {
+                      "propertyNames": {
+                        "enum": [
+                          "type",
+                          "version",
+                          "children",
+                          "direction",
+                          "format",
+                          "indent",
+                          "textFormat",
+                          "textStyle",
+                          "language",
+                          "theme"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "text"
+                        }
+                      }
+                    },
+                    "then": {
+                      "propertyNames": {
+                        "enum": [
+                          "type",
+                          "version",
+                          "text",
+                          "detail",
+                          "format",
+                          "mode",
+                          "style"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "linebreak"
+                        }
+                      }
+                    },
+                    "then": {
+                      "propertyNames": {
+                        "enum": [
+                          "type",
+                          "version"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "horizontalrule"
+                        }
+                      }
+                    },
+                    "then": {
+                      "propertyNames": {
+                        "enum": [
+                          "type",
+                          "version"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "upload"
+                        }
+                      }
+                    },
+                    "then": {
+                      "propertyNames": {
+                        "enum": [
+                          "type",
+                          "version",
+                          "relationTo",
+                          "id",
+                          "format",
+                          "caption"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "relationship"
+                        }
+                      }
+                    },
+                    "then": {
+                      "propertyNames": {
+                        "enum": [
+                          "type",
+                          "version",
+                          "relationTo",
+                          "id",
+                          "format"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "heading"
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "tag"
+                      ],
+                      "properties": {
+                        "tag": {
+                          "enum": [
+                            "h1",
+                            "h2",
+                            "h3",
+                            "h4",
+                            "h5",
+                            "h6"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "list"
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "listType"
+                      ],
+                      "properties": {
+                        "listType": {
+                          "enum": [
+                            "bullet",
+                            "number",
+                            "check"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
