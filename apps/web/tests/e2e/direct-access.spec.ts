@@ -172,6 +172,10 @@ test("concurrent server renders stay isolated per account", async ({ browser }) 
 			await signUp(account.page, `Isolated ${index}`, account.email, `Isolated-${unique}-pw`);
 			await addNote(account.page, account.note);
 			await expect(card(account.page, account.note)).toBeVisible();
+			// Reload only after the optimistic card has become a committed save.
+			await expect(
+				card(account.page, account.note).getByRole("button", { name: "Bookmark options" })
+			).toBeEnabled();
 		}
 		for (let round = 0; round < 2; round++) {
 			await Promise.all(accounts.map((account) => account.page.reload()));
