@@ -5,6 +5,10 @@ The service definition is `railway-project.ts`. `.railway/railway.ts` selects
 current official Railway TypeScript SDK. The original app deployments are outside
 this project.
 
+Published templates: [Quikmarq with Ridu](https://railway.com/deploy/quikmarq-with-ridu)
+and [Quikmarq with Payload](https://railway.com/deploy/quikmarq-with-payload).
+Both supply every deployment value, including independent generated secrets.
+
 ## Review the definition
 
 ```sh
@@ -96,19 +100,25 @@ This creates an unpublished draft. In the template composer:
 3. Set the corresponding Dockerfile paths and enable public HTTP networking for both services,
    with target ports CMS `8080` and frontend `3000`, so their public-domain
    references exist before either source builds.
-4. Set `QUIKMARQ_SHARE_SECRET` to `${{secret(64)}}`; set Payload's `PAYLOAD_SECRET`
-   to another `${{secret(64)}}`. Do not retain source-project credentials.
-5. Keep the public-domain references, local storage paths, one replica and readiness checks.
-6. Remove any source-project-specific domain, environment value or identifier.
-7. Deploy a fresh copy from the draft, then exercise signup, notes, images,
+4. Restore the literal environment defaults from `railway-project.ts`: generation
+   preserves service references but leaves literal values blank. Set each service's
+   `RAILWAY_DOCKERFILE_PATH` to its Dockerfile path, keeping the build context `/`.
+5. Set `QUIKMARQ_SHARE_SECRET` to `${{secret(64, "abcdef0123456789")}}`; set Payload's
+   `PAYLOAD_SECRET` to an independent expression. Do not retain source-project credentials.
+6. Keep the public-domain references, local storage paths, one replica and readiness checks.
+   Add a description to every preset variable. The published template deployment
+   currently creates a 5 GB volume; the direct IaC definition requests 1 GB.
+7. Remove any source-project-specific domain, environment value or identifier.
+8. Apply the changes, then deploy a fresh copy from its share link and exercise signup, notes, images,
    sharing, native admin setup and restart persistence.
 
 Publish the drafts as **Quikmarq with Ridu** and **Quikmarq with Payload**. Save
 the real resulting URLs in the root README and use Railway's provided deployment
 button. No placeholder template code should be presented as a working button.
 
-The hosted test creates only ordinary accounts and their own disposable content.
-It does not initialize an administrator or reset an existing database.
+Hosted app tests create ordinary accounts and their own disposable content.
+Native admin tests initialize the first fixture administrator only in a new,
+disposable template installation. They never reset an existing database.
 
 ## Reader experience
 

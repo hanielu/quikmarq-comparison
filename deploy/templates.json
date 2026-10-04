@@ -4,13 +4,13 @@
     "category": "CMS",
     "description": "A bookmark app with RiduCMS and a shared SvelteKit frontend",
     "overview": "deploy/template-ridu.md",
-    "url": null
+    "url": "https://railway.com/deploy/quikmarq-with-ridu"
   },
   "payload": {
     "name": "Quikmarq with Payload",
     "category": "CMS",
     "description": "A bookmark app with PayloadCMS and a shared SvelteKit frontend",
     "overview": "deploy/template-payload.md",
-    "url": null
+    "url": "https://railway.com/deploy/quikmarq-with-payload"
   }
 }

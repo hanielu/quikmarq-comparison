@@ -59,15 +59,25 @@ The Node adapter is the default; `WEB_ADAPTER=vercel` builds for Vercel.
 
 ## Deploy on Railway
 
-The intended public templates each contain two services and one 1 GB volume:
+Choose either version. Each template supplies its own domains, generated secrets,
+two services and a persistent volume; no environment variables need filling in.
+
+**Ridu**
+
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/quikmarq-with-ridu)
+
+**Payload**
+
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/quikmarq-with-payload)
 
 | Template | CMS service | Frontend service | Persistent data |
 | --- | --- | --- | --- |
 | Ridu | Go binary with embedded admin | Shared SvelteKit app, Ridu adapter | SQLite and local uploads |
 | Payload | Payload/Next.js server | Shared SvelteKit app, Payload adapter | SQLite and local uploads |
 
-The release setup and template publication steps are in [deploy/README.md](deploy/README.md).
-Template links will be added after the public source and templates have been published.
+The service definitions and template maintenance steps are in [deploy/README.md](deploy/README.md).
+Railway's template deployment currently provisions a 5 GB volume; the direct IaC
+definition requests 1 GB. Both store the database and uploads at `/data`.
 
 Both CMS services run one replica in the same region. No external database,
 bucket credentials, memory cap, or forced garbage collection is needed.
