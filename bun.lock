@@ -13,7 +13,7 @@
     "apps/web": {
       "name": "@quikmarq-comparison/web",
       "dependencies": {
-        "@riducms/sdk": "0.15.0",
+        "@riducms/sdk": "0.16.0",
         "bits-ui": "^2.18.1",
         "lucide-svelte": "^0.468.0",
         "valibot": "^1.1.0",
@@ -62,13 +62,13 @@
     "backends/ridu": {
       "name": "@quikmarq/ridu",
       "dependencies": {
-        "@riducms/plugin-form-builder": "0.15.0",
-        "@riducms/plugin-richtext": "0.15.0",
-        "@riducms/plugin-seo": "0.15.0",
-        "@riducms/sdk": "0.15.0",
+        "@riducms/plugin-form-builder": "0.16.0",
+        "@riducms/plugin-richtext": "0.16.0",
+        "@riducms/plugin-seo": "0.16.0",
+        "@riducms/sdk": "0.16.0",
       },
       "devDependencies": {
-        "@riducms/cli": "0.15.0",
+        "@riducms/cli": "0.16.0",
         "tsx": "4.23.13",
       },
     },
@@ -76,18 +76,18 @@
       "name": "@quikmarq/ridu-admin",
       "version": "0.0.0",
       "dependencies": {
-        "@riducms/admin": "0.15.0",
-        "@riducms/plugin": "0.15.0",
-        "@riducms/plugin-form-builder": "0.15.0",
-        "@riducms/plugin-richtext": "0.15.0",
-        "@riducms/plugin-seo": "0.15.0",
-        "@riducms/ui": "0.15.0",
+        "@riducms/admin": "0.16.0",
+        "@riducms/plugin": "0.16.0",
+        "@riducms/plugin-form-builder": "0.16.0",
+        "@riducms/plugin-richtext": "0.16.0",
+        "@riducms/plugin-seo": "0.16.0",
+        "@riducms/ui": "0.16.0",
         "svelte": "^5.57.0",
       },
       "devDependencies": {
         "@hvniel/lexical-svelte": "^0.1.1",
         "@iconify/json": "^2.2.509",
-        "@riducms/build": "0.15.0",
+        "@riducms/build": "0.16.0",
         "@sveltejs/vite-plugin-svelte": "^7.2.0",
         "@tsconfig/svelte": "^5.0.8",
         "@types/node": "^24.13.3",
@@ -648,27 +648,27 @@
 
     "@quikmarq/ridu-admin": ["@quikmarq/ridu-admin@workspace:backends/ridu/admin"],
 
-    "@riducms/admin": ["@riducms/admin@0.15.0", "", { "dependencies": { "@codemirror/autocomplete": "^6.20.3", "@codemirror/commands": "^6.11.1", "@codemirror/lang-css": "^6.3.1", "@codemirror/lang-html": "^6.4.12", "@codemirror/lang-javascript": "^6.2.5", "@codemirror/lang-json": "^6.0.2", "@codemirror/language": "^6.12.4", "@codemirror/state": "^6.7.5", "@codemirror/view": "^6.43.12", "@cropper/element-canvas": "2.2.0", "@cropper/element-handle": "2.2.0", "@cropper/element-selection": "2.2.0", "@dnd-kit-svelte/svelte": "^0.1.6", "@fontsource-variable/martian-mono": "5.3.0", "@hvniel/svelte-router": "^0.1.0", "@iconify/json": "^2.2.509", "@internationalized/date": "^3.12.3", "@lezer/highlight": "^1.2.3", "@riducms/plugin": "0.15.0", "@riducms/protocol": "0.15.0", "@riducms/sdk": "0.15.0", "@riducms/translations": "0.15.0", "@riducms/ui": "0.15.0", "@twinkleplop/bash": "0.1.5", "@twinkleplop/go": "0.1.5", "@twinkleplop/typescript": "0.1.5", "bits-ui": "^2.18.1", "svelte-sonner": "^1.1.1" }, "peerDependencies": { "svelte": "^5.57.0" } }, "sha512-QKRoAiGyZUgj2BxkwUUUMo08M5BoLJNmaq1z1sEvqtQJbwG1N3Rx7Sa5a94vpqO5y02IjLEWvEFWCrHpGtVRBA=="],
+    "@riducms/admin": ["@riducms/admin@0.16.0", "", { "dependencies": { "@codemirror/autocomplete": "^6.20.3", "@codemirror/commands": "^6.11.1", "@codemirror/lang-css": "^6.3.1", "@codemirror/lang-html": "^6.4.12", "@codemirror/lang-javascript": "^6.2.5", "@codemirror/lang-json": "^6.0.2", "@codemirror/language": "^6.12.4", "@codemirror/state": "^6.7.5", "@codemirror/view": "^6.43.12", "@cropper/element-canvas": "2.2.0", "@cropper/element-handle": "2.2.0", "@cropper/element-selection": "2.2.0", "@dnd-kit-svelte/svelte": "^0.1.6", "@fontsource-variable/martian-mono": "5.3.0", "@hvniel/svelte-router": "^0.1.0", "@iconify/json": "^2.2.509", "@internationalized/date": "^3.12.3", "@lezer/highlight": "^1.2.3", "@riducms/plugin": "0.16.0", "@riducms/protocol": "0.16.0", "@riducms/sdk": "0.16.0", "@riducms/translations": "0.16.0", "@riducms/ui": "0.16.0", "@twinkleplop/bash": "0.1.5", "@twinkleplop/go": "0.1.5", "@twinkleplop/typescript": "0.1.5", "bits-ui": "^2.18.1", "svelte-sonner": "^1.1.1" }, "peerDependencies": { "svelte": "^5.57.0" } }, "sha512-I6bW0SlqGLHkyv4Qx6WmIkmj3eUax45rhJIg4RgFfHjFJnugfAWRidToKJQ8Uoqx8xzDc86U2Rm+6uNRfn+JEw=="],
 
-    "@riducms/build": ["@riducms/build@0.15.0", "", { "dependencies": { "@sveltejs/vite-plugin-svelte": "^7.2.0", "@unocss/preset-wind4": "^66.7.5", "sass-embedded": "^1.104.1", "unocss": "^66.7.5", "unocss-preset-animations": "^1.3.0", "unplugin-icons": "^23.0.1", "vite": "^8.2.0" }, "peerDependencies": { "@iconify/json": "^2.2.509", "svelte": "^5.56.8" } }, "sha512-VbDN87HquqtCVzCXHNsNwaBTqHeb/yK9gpg9/BrlyEf3fkZWQ0FrqEjYJnXg0yDXlLaKZFb4Wid6BmZVPd+0sA=="],
+    "@riducms/build": ["@riducms/build@0.16.0", "", { "dependencies": { "@sveltejs/vite-plugin-svelte": "^7.2.0", "@unocss/preset-wind4": "^66.7.5", "sass-embedded": "^1.104.1", "unocss": "^66.7.5", "unocss-preset-animations": "^1.3.0", "unplugin-icons": "^23.0.1", "vite": "^8.2.0" }, "peerDependencies": { "@iconify/json": "^2.2.509", "svelte": "^5.56.8" } }, "sha512-rbigYBSjNlt9FJ+gb7e2qqFoHGcAQveonUZWOdFRIipJ+EiCXGuLj0SAh8YZwpV2KPyTFZDT+pquXMCGSloS7A=="],
 
-    "@riducms/cli": ["@riducms/cli@0.15.0", "", { "bin": { "ridu": "src/cli.js" } }, "sha512-ED+EzrTuDUs+/OUjk9sXD2KJ866f2KL4grhSU0B+AAUhHqVo738LgQJs3fMMbF2X1wy/sjzGEzF15AnUMU4C0Q=="],
+    "@riducms/cli": ["@riducms/cli@0.16.0", "", { "bin": { "ridu": "src/cli.js" } }, "sha512-f5Q+F12iUJJ1FPBhH9NGv4PwdxSXzzrQzIpJgvTmgLdaxtZz+qix7E+ytQQHQLa4jZeEOre4QtcVX9D7Fhz23Q=="],
 
-    "@riducms/plugin": ["@riducms/plugin@0.15.0", "", { "dependencies": { "@riducms/protocol": "0.15.0", "@riducms/sdk": "0.15.0", "@riducms/translations": "0.15.0", "@riducms/ui": "0.15.0" }, "peerDependencies": { "svelte": "^5.56.8" } }, "sha512-/JOpYyD9W5zSnWzOFdqIuynLp09iXuPgL5mP0A1HNu9DEeo+XaIuqEsO50Zz7HZjT1ifuWO9BoIdIB6lkMw3iQ=="],
+    "@riducms/plugin": ["@riducms/plugin@0.16.0", "", { "dependencies": { "@riducms/protocol": "0.16.0", "@riducms/sdk": "0.16.0", "@riducms/translations": "0.16.0", "@riducms/ui": "0.16.0" }, "peerDependencies": { "svelte": "^5.56.8" } }, "sha512-KfAev6ZyEbgcnM3zyRg9ee4VhDdtYFlMKjVcjJ/tXvWRJZ/6DKepjoSCFfw6WSvlN1i3vVEPS5IPhPkrQSa9lA=="],
 
-    "@riducms/plugin-form-builder": ["@riducms/plugin-form-builder@0.15.0", "", { "peerDependencies": { "@riducms/plugin": "0.15.0" }, "optionalPeers": ["@riducms/plugin"] }, "sha512-rjoI0smXOG0AZ1BPSeGO3n7ddV3tLU/I3rURPX5ymQCIjpOwUEL9aZ+8kz30B9+YktRmM8gxZ5MnXgdBweeDRQ=="],
+    "@riducms/plugin-form-builder": ["@riducms/plugin-form-builder@0.16.0", "", { "peerDependencies": { "@riducms/plugin": "0.16.0" }, "optionalPeers": ["@riducms/plugin"] }, "sha512-XPoanvJaphyGnWMRnAYCmWTcSvbQ1QREuftY98+oSs5+RWZKhzTX97ChDfHymVMvqaEbgO1z4+ALakOSjnDkFg=="],
 
-    "@riducms/plugin-richtext": ["@riducms/plugin-richtext@0.15.0", "", { "dependencies": { "@hvniel/lexical-svelte": "^0.1.1", "@lexical/clipboard": "0.49.0", "@lexical/code": "0.49.0", "@lexical/history": "0.49.0", "@lexical/link": "0.49.0", "@lexical/list": "0.49.0", "@lexical/markdown": "0.49.0", "@lexical/rich-text": "0.49.0", "@lexical/selection": "0.49.0", "@lexical/utils": "0.49.0", "@riducms/plugin": "0.15.0", "@riducms/protocol": "0.15.0", "@riducms/sdk": "0.15.0", "@riducms/ui": "0.15.0", "@types/prismjs": "^1.26.5", "lexical": "0.49.0", "prismjs": "^1.30.0", "svelte": "^5.56.8" } }, "sha512-s9F5gAj7sSnyCSl5YoHFH//8s6Sp5ZaFK8F61/wIyJNpSK4HDfrCuglkJWNg6lmtVlgtIQ8BuvkNSOypXBzUew=="],
+    "@riducms/plugin-richtext": ["@riducms/plugin-richtext@0.16.0", "", { "dependencies": { "@hvniel/lexical-svelte": "^0.1.1", "@lexical/clipboard": "0.49.0", "@lexical/code": "0.49.0", "@lexical/history": "0.49.0", "@lexical/link": "0.49.0", "@lexical/list": "0.49.0", "@lexical/markdown": "0.49.0", "@lexical/rich-text": "0.49.0", "@lexical/selection": "0.49.0", "@lexical/utils": "0.49.0", "@riducms/plugin": "0.16.0", "@riducms/protocol": "0.16.0", "@riducms/sdk": "0.16.0", "@riducms/ui": "0.16.0", "@types/prismjs": "^1.26.5", "lexical": "0.49.0", "prismjs": "^1.30.0", "svelte": "^5.56.8" } }, "sha512-6SH11o7nFgI/sWHX3jo0Y1VrMxaxwO4e1bqaeqCXSJo2Aw2xcuANA/iiFCehy7M+VKwW1S/g+7jhVjv/4TSZEQ=="],
 
-    "@riducms/plugin-seo": ["@riducms/plugin-seo@0.15.0", "", { "dependencies": { "@riducms/plugin": "0.15.0", "@riducms/protocol": "0.15.0", "@riducms/ui": "0.15.0", "svelte": "^5.56.8" } }, "sha512-7Rzr6ZIxFLq85wXvOhrrR8qj+OEsiO7MX/JK8fTdhXf/Bit13Zv2ylT/jvOe1cMPUimvggZRDJB0uwRPwd/Ztg=="],
+    "@riducms/plugin-seo": ["@riducms/plugin-seo@0.16.0", "", { "dependencies": { "@riducms/plugin": "0.16.0", "@riducms/protocol": "0.16.0", "@riducms/ui": "0.16.0", "svelte": "^5.56.8" } }, "sha512-lNo/LN/UDDtho0eR8slxcelPsCVVOpQm+t7uFVNmjT6qw9AJrSmiwYZcBo8muhoK8EcNm+9E1Rc+G1VIfVTFtg=="],
 
-    "@riducms/protocol": ["@riducms/protocol@0.15.0", "", {}, "sha512-vaPH5CXmIWWy8aMYPseWj1+Q1Jm2wy3/BZp31Qx/xoF4lOmJS86ZQswF3ofMeMEyncrlEdMPWuzMttcQTKgFuA=="],
+    "@riducms/protocol": ["@riducms/protocol@0.16.0", "", {}, "sha512-iyuPeE00t+mYj1guljOTEdBfv8Q68I+TX9rA7FClzlYiIaG3lI4Gu80S+ESnf+VbLVZuRut1L5VW3rR6JIQbjQ=="],
 
-    "@riducms/sdk": ["@riducms/sdk@0.15.0", "", { "dependencies": { "@riducms/protocol": "0.15.0" } }, "sha512-fsAh0qGwkki64+UCFMNM4qpGVZNEYaVYd+vtSE6ANGoq9Ga6IzBio/zRcsF75uX10PXcpgMADJTRurNcyDTqMw=="],
+    "@riducms/sdk": ["@riducms/sdk@0.16.0", "", { "dependencies": { "@riducms/protocol": "0.16.0" } }, "sha512-lAPtmTbIxRz35UoOfF7aqCdaRcdznKmP1Xji8XE0ZdN/IfHkcQhCtC5fOTs5VQXdEbgvqsy9wbRngIHc/ZTPGQ=="],
 
-    "@riducms/translations": ["@riducms/translations@0.15.0", "", {}, "sha512-wbrIiODY3ch8DOLBnuW0ROfc5xVDxr9P5zQGrROu6hNZI6aqvt2tk5jI3R8+y6fm/mCq92iYrA6iNsswnwVr7Q=="],
+    "@riducms/translations": ["@riducms/translations@0.16.0", "", {}, "sha512-hm9Bx150dW0uqOjJTCuYpZctecwQc2ht3NOtHgolS3BMGtZJPtfBHBR9DGFrWsn0794paIuGwbYQeYxb4Z0g4g=="],
 
-    "@riducms/ui": ["@riducms/ui@0.15.0", "", { "dependencies": { "bits-ui": "^2.18.1" }, "peerDependencies": { "svelte": "^5.56.8" } }, "sha512-cSJ8TR02Vqozgp6+mzDbrWLJmMaK4B5MTk+YlWLR0fkaHybeDpLsRdzEhqU15bwsZ6WKet+oUUhdT/Wc5fUGwQ=="],
+    "@riducms/ui": ["@riducms/ui@0.16.0", "", { "dependencies": { "bits-ui": "^2.18.1" }, "peerDependencies": { "svelte": "^5.56.8" } }, "sha512-F5CEq/AS4nCPcs0LbJtMaCUgOWiRkUyhAUGzbavVI5dnzphvQO/iXI1xVlD6UQuC3PRimKQef36pqk7s2ykVAw=="],
 
     "@rolldown/binding-android-arm-eabi": ["@rolldown/binding-android-arm-eabi@1.2.12", "", { "os": "android", "cpu": "arm" }, "sha512-dB/a1214qKfHMXCpgqR4OZT+jS4kTyEXbQGJPqzobt5EwH5rX080pxE37alt3RzvR1bf1Yz/yGqRfrYAxuPw0A=="],
 
