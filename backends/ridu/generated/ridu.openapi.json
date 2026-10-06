@@ -232,6 +232,16 @@
       "post": {
         "operationId": "createAuthadmins",
         "parameters": null,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/adminsAuthCreateUserRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "201": {
             "description": "Successful response"
@@ -501,6 +511,16 @@
       "post": {
         "operationId": "createAuthusers",
         "parameters": null,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/usersAuthCreateUserRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "201": {
             "description": "Successful response"
@@ -621,6 +641,16 @@
               "maximum": 100,
               "minimum": 1,
               "type": "integer"
+            }
+          },
+          {
+            "description": "Set false to skip counting every match: pagination omits totalDocs and totalPages, and hasNextPage stays exact.",
+            "in": "query",
+            "name": "pagination",
+            "required": false,
+            "schema": {
+              "default": true,
+              "type": "boolean"
             }
           },
           {
@@ -1089,6 +1119,16 @@
             }
           },
           {
+            "description": "Set false to skip counting every match: pagination omits totalDocs and totalPages, and hasNextPage stays exact.",
+            "in": "query",
+            "name": "pagination",
+            "required": false,
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
             "description": "JSON-encoded document filter combined atomically with collection access rules.",
             "in": "query",
             "name": "where",
@@ -1240,9 +1280,6 @@
                   "image": {
                     "description": "JSON-encoded image edit, using percentages of the oriented source.",
                     "type": "string"
-                  },
-                  "publish": {
-                    "type": "boolean"
                   }
                 },
                 "required": [
@@ -1317,6 +1354,7 @@
           "content": {
             "application/json": {
               "schema": {
+                "additionalProperties": false,
                 "properties": {
                   "data": {
                     "type": "object"
@@ -1367,9 +1405,6 @@
                       "cropHeight"
                     ],
                     "type": "object"
-                  },
-                  "publish": {
-                    "type": "boolean"
                   },
                   "url": {
                     "format": "uri",
@@ -1906,6 +1941,16 @@
             }
           },
           {
+            "description": "Set false to skip counting every match: pagination omits totalDocs and totalPages, and hasNextPage stays exact.",
+            "in": "query",
+            "name": "pagination",
+            "required": false,
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
             "description": "JSON-encoded document filter combined atomically with collection access rules.",
             "in": "query",
             "name": "where",
@@ -2036,17 +2081,7 @@
       },
       "post": {
         "operationId": "createbookmarks",
-        "parameters": [
-          {
-            "description": "Create the document as a draft when true or publish it atomically when false.",
-            "in": "query",
-            "name": "draft",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
+        "parameters": null,
         "requestBody": {
           "content": {
             "application/json": {
@@ -2355,9 +2390,46 @@
     "/api/collections/bookmarks/{id}/publish": {
       "post": {
         "operationId": "publishbookmarks",
-        "parameters": null,
+        "parameters": [
+          {
+            "description": "Require the last observed working _revision; stale mutations return conflict without changing either head.",
+            "in": "header",
+            "name": "If-Match",
+            "required": false,
+            "schema": {
+              "pattern": "^\"?[1-9][0-9]*\"?$",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/bookmarksUpdate"
+              }
+            }
+          },
+          "description": "Optional changes to apply before validating and publishing the complete working candidate, including every supplied exact translation.",
+          "required": false
+        },
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/bookmarks"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "default": {
@@ -2637,6 +2709,16 @@
             }
           },
           {
+            "description": "Set false to skip counting every match: pagination omits totalDocs and totalPages, and hasNextPage stays exact.",
+            "in": "query",
+            "name": "pagination",
+            "required": false,
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
             "description": "JSON-encoded document filter combined atomically with collection access rules.",
             "in": "query",
             "name": "where",
@@ -2767,17 +2849,7 @@
       },
       "post": {
         "operationId": "creategroups",
-        "parameters": [
-          {
-            "description": "Create the document as a draft when true or publish it atomically when false.",
-            "in": "query",
-            "name": "draft",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
+        "parameters": null,
         "requestBody": {
           "content": {
             "application/json": {
@@ -3086,9 +3158,46 @@
     "/api/collections/groups/{id}/publish": {
       "post": {
         "operationId": "publishgroups",
-        "parameters": null,
+        "parameters": [
+          {
+            "description": "Require the last observed working _revision; stale mutations return conflict without changing either head.",
+            "in": "header",
+            "name": "If-Match",
+            "required": false,
+            "schema": {
+              "pattern": "^\"?[1-9][0-9]*\"?$",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/groupsUpdate"
+              }
+            }
+          },
+          "description": "Optional changes to apply before validating and publishing the complete working candidate, including every supplied exact translation.",
+          "required": false
+        },
         "responses": {
           "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "doc": {
+                      "$ref": "#/components/schemas/groups"
+                    }
+                  },
+                  "required": [
+                    "doc"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
             "description": "Successful response"
           },
           "default": {
@@ -3433,6 +3542,16 @@
               "maximum": 100,
               "minimum": 1,
               "type": "integer"
+            }
+          },
+          {
+            "description": "Set false to skip counting every match: pagination omits totalDocs and totalPages, and hasNextPage stays exact.",
+            "in": "query",
+            "name": "pagination",
+            "required": false,
+            "schema": {
+              "default": true,
+              "type": "boolean"
             }
           },
           {
@@ -4211,6 +4330,10 @@
             "description": "Raw partial document values; omitted update values are retained from exact-locale storage. Malformed typed values are skipped.",
             "type": "object"
           },
+          "draft": {
+            "description": "Defer required fields and editorial minima for a draft; all other validation remains active.",
+            "type": "boolean"
+          },
           "embedded": {
             "items": {
               "$ref": "#/components/schemas/LiveValidationEmbeddedScope"
@@ -4319,6 +4442,10 @@
           "data": {
             "description": "Raw partial document values; omitted update values are retained from exact-locale storage. Malformed typed values are skipped.",
             "type": "object"
+          },
+          "draft": {
+            "description": "Defer required fields and editorial minima for a draft; all other validation remains active.",
+            "type": "boolean"
           },
           "embedded": {
             "items": {
@@ -4443,17 +4570,17 @@
             "type": "integer"
           },
           "totalDocs": {
+            "description": "Exact number of matching documents; omitted when the list set pagination=false.",
             "type": "integer"
           },
           "totalPages": {
+            "description": "Number of pages at this limit; omitted when the list set pagination=false.",
             "type": "integer"
           }
         },
         "required": [
           "page",
           "limit",
-          "totalDocs",
-          "totalPages",
           "hasNextPage",
           "hasPrevPage"
         ]
@@ -4584,21 +4711,32 @@
           "updatedAt"
         ]
       },
-      "adminsCreate": {
+      "adminsAuthCreateUserRequest": {
         "type": "object",
         "properties": {
-          "email": {
-            "format": "email",
-            "type": "string"
+          "data": {
+            "$ref": "#/components/schemas/adminsCreate"
           },
           "password": {
             "type": "string"
           }
         },
         "required": [
-          "email",
-          "email",
+          "data",
           "password"
+        ],
+        "additionalProperties": false
+      },
+      "adminsCreate": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "format": "email",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
         ],
         "additionalProperties": false
       },
@@ -4607,9 +4745,6 @@
         "properties": {
           "email": {
             "format": "email",
-            "type": "string"
-          },
-          "password": {
             "type": "string"
           }
         },
@@ -4816,6 +4951,17 @@
       "bookmarks": {
         "type": "object",
         "properties": {
+          "_revision": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "_status": {
+            "enum": [
+              "draft",
+              "published"
+            ],
+            "type": "string"
+          },
           "caption": {
             "anyOf": [
               {
@@ -5240,6 +5386,17 @@
       "groups": {
         "type": "object",
         "properties": {
+          "_revision": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "_status": {
+            "enum": [
+              "draft",
+              "published"
+            ],
+            "type": "string"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -5413,6 +5570,22 @@
           "updatedAt"
         ]
       },
+      "usersAuthCreateUserRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/usersCreate"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "data",
+          "password"
+        ],
+        "additionalProperties": false
+      },
       "usersCreate": {
         "type": "object",
         "properties": {
@@ -5434,16 +5607,11 @@
                 "type": "null"
               }
             ]
-          },
-          "password": {
-            "type": "string"
           }
         },
         "required": [
           "email",
-          "displayName",
-          "email",
-          "password"
+          "displayName"
         ],
         "additionalProperties": false
       },
@@ -5468,9 +5636,6 @@
                 "type": "null"
               }
             ]
-          },
-          "password": {
-            "type": "string"
           }
         },
         "additionalProperties": false

@@ -143,7 +143,7 @@ func (value *AdminUpdate) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-var AdminsCollection = core.NewTypedCollection[Admin, AdminCreate, AdminUpdate]("admins")
+var AdminsCollection = core.NewTypedCollection[Admin, AdminCreate, AdminUpdate, AdminUpdate]("admins")
 
 // User is a single-locale read. Authored fields can be omitted by access rules or projection.
 type User struct {
@@ -358,7 +358,7 @@ func (value *UserUpdate) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-var UsersCollection = core.NewTypedCollection[User, UserCreate, UserUpdate]("users")
+var UsersCollection = core.NewTypedCollection[User, UserCreate, UserUpdate, UserUpdate]("users")
 
 // Group is a single-locale read. Authored fields can be omitted by access rules or projection.
 type Group struct {
@@ -667,7 +667,7 @@ func (value *GroupUpdate) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-var GroupsCollection = core.NewTypedCollection[Group, GroupCreate, GroupUpdate]("groups")
+var GroupsCollection = core.NewTypedCollection[Group, GroupCreate, GroupUpdate, GroupUpdate]("groups")
 
 // Asset is a single-locale read. Authored fields can be omitted by access rules or projection.
 type Asset struct {
@@ -1113,7 +1113,7 @@ func (value *AssetUpdate) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-var AssetsCollection = core.NewTypedCollection[Asset, AssetCreate, AssetUpdate]("assets")
+var AssetsCollection = core.NewTypedCollection[Asset, AssetCreate, AssetUpdate, AssetUpdate]("assets")
 
 // Bookmark is a single-locale read. Authored fields can be omitted by access rules or projection.
 type Bookmark struct {
@@ -1793,7 +1793,7 @@ func (value *BookmarkUpdate) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-var BookmarksCollection = core.NewTypedCollection[Bookmark, BookmarkCreate, BookmarkUpdate]("bookmarks")
+var BookmarksCollection = core.NewTypedCollection[Bookmark, BookmarkCreate, BookmarkUpdate, BookmarkUpdate]("bookmarks")
 
 // BlockOptional preserves omitted, explicit null, and concrete nullable block children.
 // A nil outer pointer is absent; a nil Value is explicit JSON null.

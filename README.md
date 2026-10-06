@@ -114,7 +114,7 @@ checks the Ridu contract and its frontend copy.
 
 Both clients preserve native API behavior. Ridu edits use its versioned publish
 operation; Payload edits use `PATCH` with an application revision guard. Ridu
-0.13 does not revision-guard deletes; the Payload application does. These are
+0.15 does not revision-guard deletes; the Payload application does. These are
 application-level implementations, not a claim of identical internal work.
 
 ## Verification

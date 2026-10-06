@@ -37,7 +37,7 @@ test("admin image metadata and the canonical bookmark caption stay consistent wi
 		},
 	});
 	const email = `asset-owner-${unique}@example.test`;
-	const user = await owner.auth.createUser({
+	const user = await owner.auth.createUser<"users">({
 		data: { email, displayName: "Asset Owner" },
 		password,
 	});

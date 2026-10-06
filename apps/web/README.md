@@ -31,7 +31,7 @@ clients. Ridu uses `Authorization: Session`, Payload uses `Authorization: JWT`.
 The finite app adapter projects groups, bookmarks, and assets to the UI. It preserves
 each native API: Ridu publishes edits and exposes `_revision`; Payload patches edits
 and exposes `revision`. Both guard edits with If-Match. Payload guards deletes too;
-Ridu 0.13's delete API has no revision precondition. Private images use session-bound
+Ridu 0.15's delete API has no revision precondition. Private images use session-bound
 URLs from each CMS. Generated source contracts remain in their owning backends;
 `ridu.generated.ts` is an unchanged generated SDK contract copied from Ridu.
 

@@ -20,8 +20,11 @@ export interface ScalarWhere<Value> {
 
 export type TimestampWhere = Omit<ScalarWhere<string>, "contains" | "like">;
 
-export interface MultiSelectWhere<Value extends string> {
-	contains?: Value;
+/** Item membership for lists, multi-selects, reference lists and polymorphic relationships; wrap `in` in `not` to exclude. */
+export interface MembershipWhere<Value> {
+	in?: readonly Value[];
+	equals?: null;
+	notEquals?: null;
 	exists?: boolean;
 }
 
@@ -69,8 +72,6 @@ export interface AdminsPopulationSelect {
 }
 
 export type AdminsPopulate = Record<string, never>;
-
-export type AdminsPopulateOutput = Record<string, never>;
 
 export type AdminsValidationPath = "email";
 
@@ -125,8 +126,6 @@ export interface UsersPopulationSelect {
 }
 
 export type UsersPopulate = Record<string, never>;
-
-export type UsersPopulateOutput = Record<string, never>;
 
 export type UsersValidationPath = "email" | "displayName" | "groupMutationVersion";
 
@@ -202,10 +201,6 @@ export interface GroupsPopulationSelect {
 
 export interface GroupsPopulate {
 	"owner"?: boolean | UsersPopulationSelect | { depth?: number; select?: UsersPopulationSelect };
-}
-
-export interface GroupsPopulateOutput {
-	"owner": ID | Users;
 }
 
 export type GroupsValidationPath = "owner" | "name" | "rank" | "sharingEnabled" | "shareVersion";
@@ -329,11 +324,6 @@ export interface AssetsPopulate {
 	"group"?: boolean | GroupsPopulationSelect | { depth?: number; select?: GroupsPopulationSelect };
 }
 
-export interface AssetsPopulateOutput {
-	"owner": ID | Users;
-	"group": ID | Groups;
-}
-
 export type AssetsValidationPath = "owner" | "group" | "alt";
 
 export interface Bookmarks {
@@ -413,7 +403,7 @@ export interface BookmarksWhere {
 	"videoID"?: ScalarWhere<string>;
 	"text"?: ScalarWhere<string>;
 	"caption"?: ScalarWhere<string>;
-	"images"?: ScalarWhere<ID>;
+	"images"?: MembershipWhere<ID>;
 }
 
 export interface BookmarksSelect {
@@ -466,12 +456,6 @@ export interface BookmarksPopulate {
 	"images"?: boolean | AssetsPopulationSelect | { depth?: number; select?: AssetsPopulationSelect };
 }
 
-export interface BookmarksPopulateOutput {
-	"owner": ID | Users;
-	"group": ID | Groups;
-	"images": Array<ID | Assets> | null;
-}
-
 export type BookmarksValidationPath = "owner" | "group" | "kind" | "position" | "url" | "title" | "description" | "favicon" | "previewImage" | "videoProvider" | "videoID" | "text" | "caption" | "images" | `images.${number}`;
 
 export interface RiduConfig {
@@ -490,7 +474,6 @@ export interface RiduConfig {
 			where: AdminsWhere;
 			select: AdminsSelect;
 			populate: AdminsPopulate;
-			populateOutput: AdminsPopulateOutput;
 			validationPath: AdminsValidationPath;
 		};
 		"users": {
@@ -506,7 +489,6 @@ export interface RiduConfig {
 			where: UsersWhere;
 			select: UsersSelect;
 			populate: UsersPopulate;
-			populateOutput: UsersPopulateOutput;
 			validationPath: UsersValidationPath;
 		};
 		"groups": {
@@ -522,7 +504,6 @@ export interface RiduConfig {
 			where: GroupsWhere;
 			select: GroupsSelect;
 			populate: GroupsPopulate;
-			populateOutput: GroupsPopulateOutput;
 			validationPath: GroupsValidationPath;
 		};
 		"assets": {
@@ -538,7 +519,6 @@ export interface RiduConfig {
 			where: AssetsWhere;
 			select: AssetsSelect;
 			populate: AssetsPopulate;
-			populateOutput: AssetsPopulateOutput;
 			validationPath: AssetsValidationPath;
 		};
 		"bookmarks": {
@@ -554,7 +534,6 @@ export interface RiduConfig {
 			where: BookmarksWhere;
 			select: BookmarksSelect;
 			populate: BookmarksPopulate;
-			populateOutput: BookmarksPopulateOutput;
 			validationPath: BookmarksValidationPath;
 		};
 	};

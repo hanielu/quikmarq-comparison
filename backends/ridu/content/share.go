@@ -344,14 +344,17 @@ func resolveShare(ctx ridu.EndpointContext) {
 		shareNotFound(ctx.Writer)
 		return
 	}
-	totalPages := 0
+	totalDocs, totalPages := 0, 0
+	if page.Total != nil {
+		totalDocs = *page.Total
+	}
 	if page.Limit > 0 {
-		totalPages = (page.Total + page.Limit - 1) / page.Limit
+		totalPages = (totalDocs + page.Limit - 1) / page.Limit
 	}
 	writeJSON(ctx.Writer, http.StatusOK, map[string]any{
 		"group":      map[string]any{"id": group.ID, "name": group.Values["name"]},
 		"docs":       items,
-		"pagination": map[string]any{"page": page.Page, "limit": page.Limit, "totalDocs": page.Total, "totalPages": totalPages, "hasNextPage": page.Page < totalPages, "hasPrevPage": page.Page > 1},
+		"pagination": map[string]any{"page": page.Page, "limit": page.Limit, "totalDocs": totalDocs, "totalPages": totalPages, "hasNextPage": page.Page < totalPages, "hasPrevPage": page.Page > 1},
 	})
 }
 

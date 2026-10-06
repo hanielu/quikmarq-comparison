@@ -359,7 +359,7 @@ func cleanupBookmarkAssets(ctx ridu.HookContext) error {
 				delete(candidates, id)
 			}
 		}
-		if pageNumber*page.Limit >= page.Total || len(page.Documents) == 0 {
+		if !page.HasNextPage || len(page.Documents) == 0 {
 			break
 		}
 	}
@@ -389,7 +389,7 @@ func deleteGroupContents(ctx ridu.HookContext) error {
 	if err != nil {
 		return err
 	}
-	if owned.Total <= 1 {
+	if len(owned.Documents) <= 1 {
 		return ridu.Reject("Cannot delete the final group")
 	}
 	// Serialize deletes of different groups through the same owner row. Both
@@ -415,7 +415,7 @@ func deleteGroupContents(ctx ridu.HookContext) error {
 	if err != nil {
 		return err
 	}
-	if owned.Total <= 1 {
+	if len(owned.Documents) <= 1 {
 		return ridu.Reject("Cannot delete the final group")
 	}
 	groupPath, _ := query.NewPath("group")
