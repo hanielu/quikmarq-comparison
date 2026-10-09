@@ -1,7 +1,7 @@
 # Quikmarq Ridu backend
 
 Quikmarq's original Go content model, native Ridu REST API, and embedded admin,
-using the published Ridu 0.16.0 packages. The shared SvelteKit frontend lives in
+using the published Ridu 0.20.0 packages. The shared SvelteKit frontend lives in
 `../../apps/web`; this directory owns only the CMS.
 
 From the comparison repository root, install with `bun install`. Run backend

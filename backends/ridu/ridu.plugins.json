@@ -4,10 +4,10 @@
     {
       "key": "richtext",
       "goPackage": "github.com/riducms/ridu/plugins/richtext",
-      "goVersion": "v0.16.0",
+      "goVersion": "v0.20.0",
       "constructor": "New",
       "adminPackage": "@riducms/plugin-richtext",
-      "adminVersion": "0.16.0"
+      "adminVersion": "0.20.0"
     }
   ]
 }

@@ -1,7 +1,7 @@
 # Build from the comparison repository root:
 # docker build -f backends/ridu/Dockerfile -t quikmarq-ridu .
 FROM node:24-bookworm-slim AS build
-COPY --from=golang:1.25.13-bookworm /usr/local/go /usr/local/go
+COPY --from=golang:1.26.9-bookworm /usr/local/go /usr/local/go
 COPY --from=oven/bun:1.4.0 /usr/local/bin/bun /usr/local/bin/bun
 ENV PATH="/usr/local/go/bin:${PATH}" \
     CGO_ENABLED=0

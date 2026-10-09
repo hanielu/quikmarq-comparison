@@ -3,13 +3,13 @@
 	"private": true,
 	"packageManager": "bun@1.4.0",
 	"dependencies": {
-		"@riducms/plugin-richtext": "0.16.0",
-		"@riducms/plugin-seo": "0.16.0",
-		"@riducms/plugin-form-builder": "0.16.0",
-		"@riducms/sdk": "0.16.0"
+		"@riducms/plugin-richtext": "0.20.0",
+		"@riducms/plugin-seo": "0.20.0",
+		"@riducms/plugin-form-builder": "0.20.0",
+		"@riducms/sdk": "0.20.0"
 	},
 	"devDependencies": {
-		"@riducms/cli": "0.16.0",
+		"@riducms/cli": "0.20.0",
 		"tsx": "4.23.13"
 	},
 	"scripts": {

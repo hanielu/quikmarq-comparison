@@ -10,7 +10,7 @@ run as separate services, so Railway shows their memory separately.
 
 ## Try it locally
 
-Requires Bun 1.4.0, Go 1.25.13 or newer, and Node 24.
+Requires Bun 1.4.0, Go 1.26.9 or newer, and Node 24.
 
 ```sh
 bun install --frozen-lockfile
