@@ -7,7 +7,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/credentials v1.20.6
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.113.4
 	github.com/aws/smithy-go v1.28.1
-	github.com/riducms/ridu v0.20.0
+	github.com/riducms/ridu v0.21.1
 	golang.org/x/net v0.58.0
 	modernc.org/libc v1.74.1
 )

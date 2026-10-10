@@ -1,7 +1,7 @@
 # Ridu backend ownership
 
 The executable Go configuration is the content source of truth. This backend is
-part of the root Bun workspace; it uses published Ridu 0.20.0 Go and npm packages.
+part of the root Bun workspace; it uses published Ridu 0.21.1 Go and npm packages.
 
 | Location | Owner and purpose |
 | --- | --- |

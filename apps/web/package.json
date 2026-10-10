@@ -20,7 +20,7 @@
 		"bits-ui": "^2.18.1",
 		"lucide-svelte": "^0.468.0",
 		"valibot": "^1.1.0",
-		"@riducms/sdk": "0.20.0"
+		"@riducms/sdk": "0.21.1"
 	},
 	"devDependencies": {
 		"payload": "3.90.2",
